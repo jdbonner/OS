@@ -229,21 +229,75 @@ Reminder: All challenges are done using the file-server.
 
 
 #25
+Windows_PowerShell_Logic3
+In the CTF folder on the CTF User's Desktop, count the number of words in words2.txt.
+get-content words2.txt | measure-object -word
+5254 words
 
 
 #26
-
+Windows_PowerShell_Logic4
+Count the number of files in the Videos folder in the CTF user's home directory.
+(get-childitem | measure-object).count
+925 files
 
 #27
-
+Windows_PowerShell_Logic5
+Find the only line that makes the two files in the CTF user's Downloads folder different.
+Hint The flag is the string (not line number).
+compare-object -referenceobject (get-content old.txt) -differenceobject (get-content new.txt)
+popeye
 
 #28
-
+Windows_PowerShell_Logic6
+The password is the 21st line from the top, in ASCII alphabetically-sorted, descending order of the words.txt file.
+**Note: File Location - C:\Users\CTF\Desktop\CTF
+get-content words.txt | sort-object -descending | select-object -index 21
+ZzZp
 
 #29
-
+Windows_PowerShell_Logic7
+Count the number of unique words in words.txt
+**Note: File Location - C:\Users\CTF\Desktop\CTF
+(get-content words.txt | sort-object | get-unique).count
+456976
 
 #30
+Windows_PowerShell_Basics_9
+How many methods are available for the get-process cmdlet?
+Machine: Admin_Station
+(get-process | get-member -membertype method).count
+
+#31
+Windows_Powershell_Logic_8
+Count the number of folders in the Music folder in the CTF user’s profile.
+(get-childitem -recurse | where-object {$_.PSIsContainer}).count
+411
+
+#32
+Windows_PowerShell_Regex_2
+Count the number of times, case-insensitive, gaab is listed in words.txt **Note: File Location - C:\Users\CTF\Desktop\CTF
+(get-content words.txt | select-string -allmatches "gaab").count
+1
+
+#33
+Windows_PowerShell_Regex_3
+Count the number of words, case-insensitive, with either a or z in a word, in the words.txt file
+Note: File Location - C:\Users\CTF\Desktop\CTF
+
+
+#34
+Windows_PowerShell_Regex_4
+Count the number of lines, case-insensitive, that az appears in the words.txt file
+Note: File Location - C:\Users\CTF\Desktop\CTF
+
+
+#35
+
+
+
+#36
+
 
 
 

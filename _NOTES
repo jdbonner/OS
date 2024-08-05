@@ -14,8 +14,240 @@ JOBO-M-006
 Favorite DS3 knight
 ###############################BLANK###############################
 ##############################################################DAY 1##############################################################
+###############################REMOTE COMMAND###############################
+https://cctc.cybbh.io/students/students/latest/Day_0_Setup.html
+
+#command for xfreerdp
+xfreerdp /u:$USER /v:$IP_ADDRESS> /dynamic-resolution +glyph-cache +clipboard
+xfreerdp /u:student /v:10.50.38.199 /dynamic-resolution +glyph-cache +clipboard
 
 
+###############################END###############################
+###############################$PROFILE###############################
+$PROFILE 
+PowerShell supports several profile files and host programs, like Windows, support their own specific profiles. The profiles below are listed in order of precedence with the first profile having the highest precedence.
+
+All Users, All Hosts
+$PsHome\Profile.ps1
+
+All Users, Current Host
+$PsHome\Microsoft.PowerShell_profile.ps1
+
+Current User, All Hosts
+$Home\[My]Documents\Profile.ps1
+
+Current User, Current Host
+$Home\[My ]Documents\WindowsPowerShell\Profile.ps1
+
+
+
+
+
+
+
+###############################END###############################
+###############################PRIMER QUESTIONS###############################
+PRIMER #1
+Which program starts with every CMD and PowerShell instance in Windows 7 and later?
+conhost.exe
+
+
+PRIMER #2
+What Windows 10 feature supports installing Linux subsystem?
+WSL
+
+
+PRIMER #3
+Which Windows feature can be used to interact with any CLI on the Windows system concurrently using multiple tabs?
+windows terminal
+
+PRIMER #4
+What was the default shell (command line) of Windows versions Windows 2000 through Windows 8.1?
+cmd.exe
+
+PRIMER #5
+What data type do all cmd.exe commands return?
+string
+
+PRIMER #6
+What framework is PowerShell built on?
+.net
+
+PRIMER #7
+"What will all of the below give you?
+
+(get-host).version
+
+$host.version
+
+$psversiontable.psversion"
+Powershell version
+
+
+
+PRIMER #8
+After PowerShell Core is installed what CLI command launches it?
+pwsh.exe
+
+PRIMER #9
+"After PowerShell Core is installed you can still run the built in version of PowerShell side-by-side. What CLI command will launch the built in version?"
+powershell.exe
+
+
+###############################END###############################
+###############################POWER SHELL QUESTIONS###############################
+#1
+Windows_PowerShell_Basics1
+What syntax do PowerShell cmdlets follow?
+verb-noun
+
+#2
+Windows_PowerShell_Basics2
+What PS command will list all PowerShell cmdlets?
+get-command
+
+#3
+Windows_PowerShell_Basics3
+What PowerShell command will list all verbs?
+get-verb
+
+#4
+Windows_PowerShell_Basics4
+BASH commands output strings. PowerShell commands output what data type?
+objects
+
+#5
+Windows_PowerShell_Basics5
+All PowerShell objects are comprised of what two things?
+Flag format: things,things
+properties, methods
+#6
+Windows_PowerShell_Basics6
+What command will list all things that make up a PowerShell object?
+get-member
+
+#7
+Windows_PowerShell_Alias1
+What PowerShell command will list PowerShell aliases?
+get-alias
+
+#8
+Windows_PowerShell_Alias2
+What PowerShell command lists all of the contents of a directory?
+get-childitem
+
+
+#9
+Windows_PowerShell_Help1
+What is the basic cmdlet that displays help about Windows Powershell cmdlets and concepts?
+get-help
+
+
+#10
+Windows_PowerShell_Help2
+PowerShell "help files" don't show the entire help file with a basic command. What switch option shows the entire help file?
+-full
+
+#11
+Windows_PowerShell_Help3
+What PowerShell command will update the PowerShell "help files" to the latest version?
+update-help
+
+#12
+Windows_PowerShell_Help 4
+What help switch will show you the "help files" on Microsoft's website, in your default browser?
+-online
+
+#13
+Windows_PowerShell_Interaction1
+What command will start the Chrome browser on your machine?
+start chrome
+
+#14
+Windows_PowerShell_Interaction2
+What command using a PS Method will stop chrome?
+Flag is the full command.
+
+#15
+Windows_PowerShell_Interaction3
+What PowerShell command (without using a method) will stop the Chrome process?
+
+
+
+#16
+Windows_PowerShell_CimClasses1
+PowerShell doesn't have a native cmdlet that will give you processor information (such as get-processor or get-cpu). 
+Knowing this information might be necessary. What command would give you information about the system's processor?
+Flag is the full command
+Get-WmiObject Win32_Processor
+
+
+#17
+Windows_PowerShell_Logic1
+What PowerShell command will read a text file?
+get-content
+
+#18
+Windows_PowerShell_Logic2
+What PowerShell command will allow for counting lines in a file, averaging numbers, and summing numbers?
+measure-object
+
+
+#19
+Windows_PowerShell_Regex_1
+What PowerShell command searches for text patterns in a string?
+select-string
+
+
+#20
+Windows_PowerShell_Basics_7
+Users' files are stored in their corresponding home directory. What is the literal path to all home directories on a Windows 10 system?
+C:\users\
+
+
+#21
+Windows_PowerShell_Basics_8
+How many properties are available for the get-process cmdlet?
+Note: Property values only
+
+
+#22
+Windows_PowerShell_Alias3
+How many aliases does PowerShell have for listing the contents of a directory?
+3
+
+#23
+Windows_PowerShell_Help 5
+When requesting the help file for the get-process cmdlet, what full command is the 9th example given?
+get-process powershell
+
+#24
+Windows_PowerShell_CimClasses2
+To complete this challenge, find the description of the Lego Land service.
+Reminder: All challenges are done using the file-server.
+
+
+
+#25
+
+
+#26
+
+
+#27
+
+
+#28
+
+
+#29
+
+
+#30
+
+
+
+###############################END###############################
 
 
 
@@ -32,11 +264,15 @@ Favorite DS3 knight
 
 
 
+###############################QUESTIONS###############################
 
 
 
 ###############################BLANK###############################
+###############################END###############################
+
 ###############################BLANK###############################
+###############################END###############################
 
 
 

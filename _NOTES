@@ -25,7 +25,8 @@ xfreerdp /u:student /v:10.50.38.199 /dynamic-resolution +glyph-cache +clipboard
 ###############################END###############################
 ###############################$PROFILE###############################
 $PROFILE 
-PowerShell supports several profile files and host programs, like Windows, support their own specific profiles. The profiles below are listed in order of precedence with the first profile having the highest precedence.
+PowerShell supports several profile files and host programs, like Windows, support their own specific profiles. 
+The profiles below are listed in order of precedence with the first profile having the highest precedence.
 
 All Users, All Hosts
 $PsHome\Profile.ps1
@@ -90,7 +91,8 @@ After PowerShell Core is installed what CLI command launches it?
 pwsh.exe
 
 PRIMER #9
-"After PowerShell Core is installed you can still run the built in version of PowerShell side-by-side. What CLI command will launch the built in version?"
+"After PowerShell Core is installed you can still run the built in version of PowerShell side-by-side. 
+What CLI command will launch the built in version?"
 powershell.exe
 
 
@@ -167,11 +169,12 @@ start chrome
 Windows_PowerShell_Interaction2
 What command using a PS Method will stop chrome?
 Flag is the full command.
+(get-process chrome).kill()
 
 #15
 Windows_PowerShell_Interaction3
 What PowerShell command (without using a method) will stop the Chrome process?
-
+stop-process -name chrome
 
 
 #16
@@ -293,16 +296,28 @@ Note: File Location - C:\Users\CTF\Desktop\CTF
 
 
 #35
+Windows_PowerShell_Logic_9
+Use a PowerShell loop to unzip the Omega file 1,000 times and read what is inside.
+Note: Make sure you back up the .zip file to a different directory before attempting this challenge.
+
 
 
 
 #36
+Windows_PowerShell_Regex_5
+Count the number of words in words.txt that meet the following criteria:
+a appears at least twice consecutively
+and is followed immediately by any of the letters a through g
+Note: File Location - C:\Users\CTF\Desktop\CTF
+Example: aac...aaa...
+
+###############################END###############################
+###############################POWERSHELL_PRIFILES###############################
 
 
 
 
 ###############################END###############################
-
 
 
 

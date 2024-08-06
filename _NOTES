@@ -212,7 +212,8 @@ C:\users\
 Windows_PowerShell_Basics_8
 How many properties are available for the get-process cmdlet?
 Note: Property values only
-
+(get-process | get-member -membertype property).count
+52
 
 #22
 Windows_PowerShell_Alias3
@@ -228,8 +229,8 @@ get-process powershell
 Windows_PowerShell_CimClasses2
 To complete this challenge, find the description of the Lego Land service.
 Reminder: All challenges are done using the file-server.
-
-
+Get-WmiObject win32_servie | ?{$_.Name -like "Legoland"} | select Description
+i_love_legos
 
 #25
 Windows_PowerShell_Logic3
@@ -287,21 +288,27 @@ Count the number of times, case-insensitive, gaab is listed in words.txt **Note:
 Windows_PowerShell_Regex_3
 Count the number of words, case-insensitive, with either a or z in a word, in the words.txt file
 Note: File Location - C:\Users\CTF\Desktop\CTF
-
+(get-content words.txt | where-object { $_ -match '(a|z)'}).count
+160352
 
 #34
 Windows_PowerShell_Regex_4
-Count the number of lines, case-insensitive, that az appears in the words.txt file
+Count the number of lines, case-insensitive, that a or z appears in the words.txt file
 Note: File Location - C:\Users\CTF\Desktop\CTF
-
+(get-content words.txt | where-object { $_ -match '(az)'}).count
+2754
 
 #35
 Windows_PowerShell_Logic_9
 Use a PowerShell loop to unzip the Omega file 1,000 times and read what is inside.
 Note: Make sure you back up the .zip file to a different directory before attempting this challenge.
-
-
-
+for($i=1000;$i -gt 0; $i--){expand-archive -path ".\omega${i}.zip";mv "omega${i}\omega$($i-1).zip"}
+expand-archive .\omega1.zip
+cd omega1
+expand-archive.\omega1.zip
+cd omega1
+get-content .\omega1.txt
+kung-fu
 
 #36
 Windows_PowerShell_Regex_5
@@ -310,10 +317,45 @@ a appears at least twice consecutively
 and is followed immediately by any of the letters a through g
 Note: File Location - C:\Users\CTF\Desktop\CTF
 Example: aac...aaa...
+(get-content words.txt | where-object { $_ -match '((aa)[a-g])}).count
+357
 
 ###############################END###############################
 ###############################POWERSHELL_PRIFILES###############################
+#1
+Windows_PowerShell_Profiles1
+Which PowerShell profile has the lowest precedence?
+Current User, Current Host
 
+
+#2
+Windows_PowerShell_Profiles2
+Which PowerShell profile has the highest precedence?
+All Users, All Hosts
+
+#3
+Windows_PowerShell_Profiles3
+Which PowerShell variable stores the current user’s home directory?
+$HOME
+
+#4
+Windows_PowerShell_Profiles4
+Which PowerShell variable stores the installation directory for PowerShell?
+$PsHome
+
+#5
+Windows_PowerShell_Profiles5
+Which PowerShell variable stores the path to the "Current User, Current Host" profile?
+$Profile
+
+#6
+Windows_PowerShell_Profiles6
+What command would you run to view the help for PowerShell Profiles?
+
+
+#7
+
+#8
 
 
 
@@ -1296,9 +1338,129 @@ Changing the ADS content of a file does not affect the file hash. Only changing 
 
 ###############################END###############################
 ###############################BLANK###############################
+#1
+Primer_Registry_1
+What Windows registry path is the Volatile Hive?
+HKLM\HARDWARE
+
+#2
+Primer_Registry_2
+What registry key creates the Wow6432Node to represent 32-bit applications that run on a 64-bit version of Windows?
+HKEY_LOCAL_MACHINE\SOFTWARE
+
+
+#3
+Primer_Registry_3
+In what registry path are the BOOT_START drivers located?
+HKLM\SYSTEM\CurrentControlSet\Services
+
+#4
+Primer_Registry_4
+What start value do BOOT_START drivers have in the registry?
+0x0
+
+
+#5
+Primer_Registry_5
+During kernel initialization, what registry location is read containing all SYSTEM_START drivers?
+HKLM\SYSTEM\CurrentControlSet\Services
+
+
+#6
+Primer_Registry_6
+SERVICE_AUTO_START drivers and services are loaded after kernel initialization. What start value do they have in the registry?
+0x02
+
+
+#7
+Primer_Registry_7
+What start value do SERVICE_DEMAND_START drivers and services have in the registry?
+0x3
+
+#8
+Primer_Registry_8
+When accessing a remote registry which are the only 2 accessible HKEYs?
+SYNTAX Hive, Hive
+HKLM, HKU
+
+#9
+Primer_Registry_9
+What PowerShell cmdlet will list currently mapped drives?
+get-psdrive
+
+
+#10
+Primer_Registry_10
+What is the native Windows GUI tool for managing the registry?
+regedit
 
 ###############################END###############################
 ###############################BLANK###############################
+#1
+Windows_Registry_Basics_1
+What registry hive contains all machine settings?
+HKLM
+
+#2
+Windows_Registry_Basics_2
+What registry hive contains all user settings?
+HKU
+
+#3
+Windows_Registry_Basics_3
+What registry hive contains only the currently logged-in user's settings?
+HKCU
+
+#4
+Windows_Registry_Basics_4
+The HKEY_CURRENT_USER registry hive is a symbolic link to another registry subkey. What is the subkey that it is linked to?
+Flag format: HIVE\SID.........................
+Reminder: All challenges are done using Workstation2.
+
+
+#5
+Windows_Registry_Basics_5
+What PowerShell command will list all the subkeys and contents in the current directory and/or will list all the subkeys and the contents of a directory you specify?
+
+
+
+#6
+Windows_Registry_Basics_6
+What PowerShell command will list only the contents of a registry key or subkey?
+
+
+
+#7
+Windows_Registry_Basics_7
+What registry subkey runs every time the machine reboots? The flag is the full path, using PowerShell.
+Flag format: FULL\PATH\ALL\CAPS
+
+#8
+Windows_Registry_Basics_8
+What registry subkey runs every time a user logs on? The flag is the full path, using PowerShell.
+Flag format: FULL\PATH\ALL\CAPS
+
+#9
+Windows_Registry_Basics_9
+What registry subkey runs a single time, then deletes its value once the machine reboots? The flag is the full path, using PowerShell.
+Flag format: FULL\PATH\ALL\CAPS
+
+
+#10
+
+#11
+
+#12
+
+#13
+
+#14
+
+#15
+
+#16
+
+#17
 
 ###############################END###############################
 

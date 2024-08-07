@@ -303,10 +303,14 @@ $Profile
 #6
 Windows_PowerShell_Profiles6
 What command would you run to view the help for PowerShell Profiles?
-
+get-help about_profiles
 
 #7
+Windows_PowerShell_Profiles7
+What command would tell you if there was a profile loaded for All Users All Hosts?
 
+Flag is the full command syntax
+test-path -path $PROFILE.AllUsersAllHosts
 #8
 
 
@@ -728,13 +732,47 @@ garviel,tarik,aximand,ezekyle,sejanus,erebus
 #17
 Linux Basics Users and Groups3
 Find the user with a unique login shell.
-
+cut -d ':' -f 7 /etc/passwd | sort -u
+cat /etc/passwd | grep /bin/sh
+nobody
 
 #18
+Linux Basics Users and Groups4
+Identify the algorithm, the amount of salted characters added, and the length of the hashed password 
+in the file that stores passwords.
+Hint: Research 'padding'...
+Flag format: algorithm,#characters,#length
 
 #19
+Linux Basics Permissions1
+Find the directory named Bibliotheca. Enter the absolute path to the directory.
+find / -type d -name 'Bibliotheca' 2> /dev/null
+/media/Bibliotheca
 
 #20
+Linux Basics Permissions2
+Identify the number of users with valid login shells, who can list the contents of the Bibliotheca directory.
+
+
+#21
+
+#22
+
+#23
+
+#24
+
+#25
+
+#26
+
+#27
+
+#28
+
+#29
+
+#30
 
 ###############################END###############################
 ###############################BLANK###############################

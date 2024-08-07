@@ -314,7 +314,7 @@ What command would you run to view the help for PowerShell Profiles?
 ###############################END###############################
 ##############################################################END OF DAY 1##############################################################
 ##############################################################DAY 2##############################################################
-###############################BLANK###############################
+###############################REGISTRY PRIMER###############################
 #1
 Primer_Registry_1
 What Windows registry path is the Volatile Hive?
@@ -372,7 +372,7 @@ What is the native Windows GUI tool for managing the registry?
 regedit
 
 ###############################END###############################
-###############################BLANK###############################
+###############################REGISTRY###############################
 #1
 Windows_Registry_Basics_1
 What registry hive contains all machine settings?
@@ -452,7 +452,7 @@ HKEY_CURRENT_USER\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE
 #17
 
 ###############################END###############################
-###############################BLANK###############################
+###############################NTFS PRIMER###############################
 #1
 Primer_NTFS_1
 The ____ determines how the data is stored on disk.
@@ -541,6 +541,8 @@ $STANDARD_INFORMATION
 Primer_NTFS_17
 What CLI command will only show the letters of attached drives? **Hint command is 3 words
 fsutil fsinfo drives
+###############################END###############################
+###############################NTFS###############################
 
 #18
 Windows_File_System_Basics_1

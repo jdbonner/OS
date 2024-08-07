@@ -752,11 +752,22 @@ find / -type d -name 'Bibliotheca' 2> /dev/null
 #20
 Linux Basics Permissions2
 Identify the number of users with valid login shells, who can list the contents of the Bibliotheca directory.
-
+cat /etc/passwd | grep -v nologin | grep -v false | grep -vc sync
+15
 
 #21
-
+Linux Basics Permissions3
+The permissions that user sejanus has on /media/Bibliotheca, in octal format.
+Flag format: #
+HINT: Think about groups...
+stat -c "%a" /media/Bibliotheca
+755
 #22
+Linux Basics Permissions 4
+Locate the file within /media/Bibliotheca that is modifiable by the only user that is part of the chapter group,
+but not part of the lodge group.
+Hint: Not the hidden file...
+
 
 #23
 

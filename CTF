@@ -688,6 +688,7 @@ users in the root group.
 #11
 Linux Basics LFS Hierarchy6
 What is the absolute path for the binary cat man-page?
+man --path cat
 /usr/share/man/man1/cat.1.gz
 
 #12
@@ -770,20 +771,61 @@ Hint: Not the hidden file...
 
 
 #23
+Linux Basics Permissions 5
+Identify the file within /media/Bibliotheca where the owning group has more rights than the owning user.
+
 
 #24
+Linux Basics Permissions 6
+Execute the file owned by the guardsmen group in /media/Bibliotheca, as the owning user.
+The flag is the code name provided after a successful access attempt.
+Hint: Remember your sudo options.
+ls -lisa -R /media/Bibliotheca | grep guardsmen
+find /media/Bibliotheca -type f -name "Codex_Imperium" 2> /dev/null
+sudo cat /media/Bibliotheca/Bibliotheca_quattuor/Tactica_Imperium
+GHOSTS
 
 #25
+Linux Basics Permissions 7
+The user tyborc is unable to access the directory:
+/media/Bibliotheca/Bibliotheca_unus
+Why? Identify the permission missing in standard verb form.
+ls -lisa <parent directory>
+execute
 
 #26
+Linux Basics Permissions 8
+You only have a single submission attempt for this challenge.
+Locate the file in /media/Bibliotheca that Quixos has sole modification rights on.
+The flag is the absolute path for the file, include the file name.
+
 
 #27
+Linux Basics Permissions9
+Read a concealed file within /media/Bibliotheca
+find /media/Bibliotheca -type f -name ".*" 2> /dev/null
+cat /media/Bibliotheca/Bibliotheca_duo/.Secrets_of_the_Immaterium
+expand your mind
 
 #28
+Linux Basics Permissions10
+Find the warp and read its secrets for the flag.
+cat /media/Bibliotheca/Bibliotheca_duo/.warp2/.warp5/warp5/.warp3/warp2/.secrets
+Ph'nglui mglw'nafh Cthulhu
 
 #29
+Linux Basics Regular Expressions1
+Using the commands ls and grep, identify the number of directories in /etc/ that end in .d
+find /etc -name *.d -type d -maxdepth 1 2>/dev/null | wc -l
+28
 
 #30
+Linux Basics Regular Expressions2
+File: home/garviel/numbers
+Use regular expressions to match patterns similar to valid and invalid IP addresses.
+The answer is the count/number of lines that match in the file.
+
+
 
 ###############################END###############################
 ###############################BLANK###############################

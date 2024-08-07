@@ -595,27 +595,147 @@ What Windows file maps hostnames to IP addresses?
 ###############################END###############################
 ##############################################################END OF DAY 2##############################################################
 ##############################################################DAY 3##############################################################
-###############################BLANK###############################
+###############################LINUX BASICS###############################
 #1
+Linux Basics Reformat0
+This challenge is worth 0 POINTS, and should only be attempted after all other challenges that are open to you, are completed!
+
+File: /home/garviel/NMAP_all_hosts.txt
+
+Format the file into the output displayed below using native Linux binaries like awk.
+
+
+Service: ident Count: 1
+==============================
+192.168.33.236
+
+Service: IIS Count: 3
+==============================
+192.168.33.205
+192.168.33.227
+192.168.33.229
+
+--TRIMMED--
+Present the script used to the instructor for credit when complete. Be prepared to explain the code.
+
+HINT: awk is a powerful text manipulation scripting language. It is a bit challenging to learn. Use the tutorials below to get started.
+
+Awk - A Tutorial and Introduction - by Bruce Barnett
+
+The GNU Awk User’s Guide
+
+
+
 #2
+Linux Basics 1
+What command lists the contents of directories in Linux/Unix systems?
+ls
+
 #3
+Linux Basics 2
+For the ls command, what arguments, or switch options, will allow you to print human-readable 
+file sizes in a long-list format?
+The flag is entire command, including arguments
+ls -lh
+
 #4
+Linux Basics 3
+What character will pipe the standard output from
+echo "I’m a plumber"
+to another command, as standard input?
+|
+
 #5
+Linux Basics 4
+What argument/switch option, when used with man, will search the short descriptions and man-page-names for a 
+keyword that you provide?
+The flag is the complete command, with argument/switch.
+man -k
+
 #6
+Linux Basics LFS Hierarchy
+What is the absolute path to the root directory?
+/
+
 #7
+Linux Basics LFS Hierarchy2
+What is the absolute path to the default location for configuration files?
+/etc
+
 #8
+Linux Basics LFS Hierarchy3
+What is the directory that contains executable programs (binaries) which are needed in single user mode, 
+to bring the system up or to repair it?
+/bin
+
 #9
+Linux Basics LFS Hierarchy4
+What is the absolute path to the directory which contains non-essential binaries that are accessible 
+by standard users as well as root?
+/usr/bin
+
+
 #10
+Linux Basics LFS Hierarchy5
+An absolute path to a directory which contains binaries only accessible by the root user, or 
+users in the root group.
+/usr/sbin
+
 #11
+Linux Basics LFS Hierarchy6
+What is the absolute path for the binary cat man-page?
+/usr/share/man/man1/cat.1.gz
+
 #12
+Linux Basics 5
+Search the man pages for the keyword digest. 
+Then, use one of the binaries listed to hash the string OneWayBestWay using the largest sha hash available.
+The resulting hash is the flag.
+man-k digest
+man -k digest
+echo "OneWayBestWay" | sha512sum
+a81bc463469ee1717fc9e388e3799c653f63a3de5e9496b5707b56488b046cbf75665235d316c5c0053a597dc7d40c917a2d9006fe35e9cb47766c05ac71989b
 #13
+Linux Basics 6
+Use File: /home/garviel/Encrypted
+This file contains encrypted contents. Identify its file type, then decode its contents.
+Hint: Use OpenSSL
+Research: https://www.openssl.org/docs/man1.1.1/man1/enc.html
+Reminder: All challenges are done using the Terra box.
+
 #14
+Linux Basics LFS Hierarchy7
+Search the user home directories to find the file with the second-most lines in it. 
+The flag is the number of lines in the file.
+Hint: Exclude the VDI file!
+find $HOME/* -type f -exec wc -l {} + | sort -rn
+20000
+
 #15
+Linux Basics Users and Groups1
+Read the file that contains the user database for the machine. Identify a strange comment.
+awk -F: '$3 >= 1000 && $3 != 65534 { printf "%s -- %s\n",$1,$5;}' /etc/passwd
+Traitor
+
 #16
+Linux Basics Users and Groups2
+Identify all members of the lodge group. List their names in alphabetical order with a comma in between each name.
+Flag Format: name,name,name
+cat /etc/group | grep lodge | cut -d : -f 4
+#put in alphabetical order
+garviel,tarik,aximand,ezekyle,sejanus,erebus
+
 #17
+Linux Basics Users and Groups3
+Find the user with a unique login shell.
+
+
 #18
+
 #19
+
 #20
+
 ###############################END###############################
 ###############################BLANK###############################
 #1

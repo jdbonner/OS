@@ -1,11 +1,11 @@
 #Resources
-  ###############################RESOURCES###############################
-  #OS Activities
-  http://10.50.22.197:8000/
-  #Student Guide
-  https://os.cybbh.io/public
-  stack number: 2
-  10.50.38.199
+###############################RESOURCES###############################
+#OS Activities
+http://10.50.22.197:8000/
+#Student Guide
+https://os.cybbh.io/public
+stack number: 2
+10.50.38.199
 
 
 ###############################ACTIVITIES LOG###############################

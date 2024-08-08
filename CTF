@@ -1193,9 +1193,83 @@ What session ID do Windows services operate in?
 0
 
 #39
+Windows_Boot_Init_5
+What process creates access tokens?
+LSASS
 
 #40
+Windows_Boot_Init_6
+What is the parent process to all svchosts?
+services.exe
 
+#41
+Windows_Boot_Init_7
+What process is waiting with high priority for the Secure Attention Sequence (SAS)?
+winlogon
+
+#42
+Windows_Boot_Init_8
+What user space process spawns explorer, then dies?
+Userinit
+
+#43
+Windows_Boot_Init_9
+What is the name of the bootloader, with extension, we are using on all of the Windows machines in this environment?
+winload.exe
+
+#44
+Windows_Boot_Init_10
+Challenge only allows ONE attempt
+
+Based on the boot loader from Init_9, which firmware are we using (BIOS or UEFI) in our environment?
+BIOS
+
+#45
+Windows_Boot_Init_11
+What file saves the memory state to the hard drive when going into hibernation?
+Hiberfil.sys
+
+#46
+Windows_Boot_Init_12
+What bootloader is responsible for restoring the system to its original state after hibernation?
+Winresume.exe
+
+#47
+Windows_Boot_Remediate_1
+The system is booting into safe mode. Identify the flag from the command-line output of the command 
+used to diagnose boot issues.
+
+Follow these instructions to boot the virtual image -- Click Here ---> Windows Bootkit Instructions
+bcdedit
+description  Flag: 1RF5Zgf9P
+
+#48
+Windows_Boot_Remediate_2
+The system is booting into safe mode. Correct that, and reboot into the desktop. The flag is on the desktop.
+
+Follow these Windows Bootkit Instructions to boot the virtual image
+bcdedit /deletevalue {default} safeboot
+shutdown /r
+shutdown -a    #run until it aborts the shutdown
+76Drp6hB
+
+#49
+Windows_Boot_Remediate_3
+Prevent the system restart using the command line, and then identify persistence mechanisms that are reverting the OS and boot loader configurations.
+
+The flag is in the same folder as the persistence mechanism.
+
+HINT: Copy the error message in its entirety to figure out what is happening to the system.
+
+WARNING: You have 30 seconds to comply.
+
+Follow these Windows Bootkit Instructions to boot the virtual image
+
+C:\Users\Yang\AppData\Roaming\Microsoft\Internet Explorer\uic Launch\User Pinned\Taskbar\Windows Powershell.lnk
+
+#50
+
+#51
 
 ###############################END###############################
 
@@ -1254,3 +1328,20 @@ What session ID do Windows services operate in?
 #38
 #39
 #40
+#41
+#42
+#43
+#44
+#45
+#46
+#47
+#48
+#49
+#50
+
+
+
+
+
+
+

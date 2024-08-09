@@ -1370,18 +1370,64 @@ Hash the first partition of the file using md5sum. The flag is the hash.
 
 xxd -l 120 -ps -c 20 xxd.1
 
+dd -ibs 16 
+
+dd bs=1 skip==446 count=16 if=mbroken of=linuxsucks
+md5sum linuxsucks
+2a5948fad4ec68170b23faaa2a16cef8
+
 #13
+Linux Boot MBR4
+The file /home/bombadil/mbroken is a copy of an MBR from another machine.
+
+You will find the "word" GRUB in the output, hash using md5sum.
+
+The flag is the entire hash.
+dd bs=1 skip=392 count=4 if=mmbroken of=linuxsucks
+md5sum linuxsucks
+5fa690cb0f0789cbc57decfd096a503e
 
 #14
+Linux Boot MBR5
+The file /home/bombadil/mbroken is a copy of an MBR from another machine.
+
+Hash only the Bootstrap section of the MBR using md5sum. The flag is the entire hash.
+
 
 #15
+Linux Boot SysV 2
+Identify the default run level on the SysV Init Linux machine.
 
+Flag format: #
+2
 
 #16
+Linux Boot SysV 3
+What is the last script to run when the command init 6 is executed?
+
+Flag format: /absolute/path
+
+NOTE: “Use the Minas_Tirith machine for this question.”
+
 
 #17
+Linux Boot SysV 4
+What run levels start the daemon that allows remote connections over port 22?
+
+Flag format: #,#,#,#
+
+NOTE: Use the Minas_Tirith machine for this question.
+cat /etc/inittab
+2,3,4,5
 
 #18
+Linux Boot Systemd 1
+Identify the file that init is symbolically-linked to, on the SystemD init machine.
+
+Flag format: /absolute/path
+
+Reminder: Use your Terra machine for these SystemD challenges!
+
 
 #19
 

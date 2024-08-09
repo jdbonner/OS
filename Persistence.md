@@ -39,4 +39,29 @@ the boot
 bcdedit
 
 
+# Linux
+
+/etc/init
+/etc/profile
+.bash_profile and .bashrc files
+
+## Commands
+
+student@linux-opstation-kspt:~$ sudo xxd -l 512 -g 1 /dev/vda
+dd if=/dev/vda of=MBRcopy bs=512 count=1
+
+
+cat /etc/systemd/system/display-manager.service | tail -n 13
+
+man xxd
+xxd -l 1 mbroken
+
+> the MBR will always end in 55AA. Otherwise will indicate a problem.
+
+
+
+
+
+
+
 

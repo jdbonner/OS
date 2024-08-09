@@ -1274,7 +1274,129 @@ C:\Users\Yang\AppData\Roaming\Microsoft\Internet Explorer\uic Launch\User Pinned
 ###############################END###############################
 
 ##############################################################END OF DAY 4##############################################################
+##############################################################DAY 5##############################################################
+###############################LINUX BOOT###############################
+#1
+Linux Boot Hex1
+Solve the following equation:
 
+0x31A - 0x21B
+
+Enter the flag in Hexadecimal form.
+
+0xFF
+
+#2
+Linux Boot Bits and Bytes 1
+How many bits are in a nibble, and a byte?
+
+Flag format: #,#
+4,8
+
+#3
+Linux Boot Bits and Bytes 2
+How many bits does a single Hexadecimal character represent?
+4
+
+#4
+Linux Boot Bits and Bytes 3
+Each hex pair contains a value of 8 bits when used to represent memory. The range from 0x00000000 to 0x00000010 in hexadecimal represents addresses in memory or positions in data. This range includes the starting address (0x00000000) and ends at the address (0x00000010).
+
+How many bytes could the range 0x00000000 - 0x00000010 contain?
+
+
+#5
+Linux Boot MBR 1
+How large is the Master Boot Record and what directory is it located in?
+
+Flag format: #InBytes,fullpathdirectory
+
+
+#6
+Linux Boot SysV 1
+Identify which of your Linux machines is using SysV Initialization.
+Minas_Tirith
+
+#7
+Linux Boot Hex2
+What are the maximum and minimum value a single Hexadecimal digit can contain?
+
+Enter the values in Linux Hexadecimal Numerical Constant form.
+
+Flag format: min-max
+
+
+#8
+Linux Boot Hex3
+What are the maximum and minimum values, in decimal notation, that a single Hexadecimal digit can represent?
+
+Flag format: min-max
+0-15
+
+#9
+Linux Boot Hex4
+Solve the following equation:
+
+0x31A + 0x43
+
+Enter the flag in Hexadecimal form.
+0x35D
+
+#10
+Linux Boot Bits and Bytes 4
+Execute : sudo cat /dev/vda | xxd -l 32 -c 0x10 -g 1
+
+What are the values contained in hex positions 0x00000001 through 0x00000008?
+
+Flag format: Value,Value,Value,...
+
+Machine: For this challenge: Minas_Tirith (ssh from Admin_Station)
+63, 90, 8e, d0, 31, e4, 8e, d8
+
+#11
+Linux Boot MBR 2
+Locate the master boot record for one of the Linux machines and read it with xxd
+
+What programming language is the MBR written in?
+
+HINT: Look at the first three bytes
+assembly language
+
+#12
+Linux Boot MBR3
+The file /home/bombadil/mbroken is a copy of an MBR from another machine.
+
+Hash the first partition of the file using md5sum. The flag is the hash.
+
+xxd -l 120 -ps -c 20 xxd.1
+
+#13
+
+#14
+
+#15
+
+
+#16
+
+#17
+
+#18
+
+#19
+
+#20
+
+#21
+
+#22
+
+#23
+
+#24
+
+###############################END###############################
+##############################################################END OF DAY 1##############################################################
 
 
 

@@ -1442,7 +1442,198 @@ Reminder: Use your Terra machine for these SystemD challenges!
 #24
 
 ###############################END###############################
-##############################################################END OF DAY 1##############################################################
+##############################################################END OF DAY 5##############################################################
+##############################################################DAY 6##############################################################
+###############################Windows Process Validity###############################
+#1
+Primer_Processes1
+What is the full path to folder used when Windows redirects 32 bit applications running on a 64bit system?
+C:\Windows\SysWOW64	
+
+#2
+Primer_Processes2
+What Windows System Service starts the kernel and user mode subsystems?
+smss.exe
+
+#3
+Primer_Processes3
+What Windows system process:
+
+Runs in session 0
+is responsible for enforcing the security policy on the system
+Performs all logon functions
+Handles password changes
+Creates access tokens
+Writes to the Windows Security Log
+
+LSASS
+
+#4
+Primer_Processes4
+Which is spoolsv.exe?
+
+
+#5
+Primer_Processes5
+Which service type is explorer.exe?
+
+
+#6
+Primer_Processes6
+During a network survey you observed a host running inetinfo.exe service. What type of server might you have found?
+IIS    #Internet Information Server 
+
+#7
+Primer_Processes7
+During a reconnaissance mission you enumerated a host running the dns.exe service. Is this a user pc or a server?
+server
+
+#8
+Primer_Processes8
+A host running firefox and office 365 is most likely what type of host? Server or Client
+client
+
+#9
+Primer_Processes9
+How does a User-Mode Service request resources?
+System Call
+
+#10
+Primer_Processes10
+Passively copying currently running processes for comparison later is known as?
+baselining
+
+#11
+Primer_Processes11
+What can execute any part of a processes code, to include parts already being executed?
+thread
+
+#12
+Primer_Processes12
+Windows has how many process priority levels?
+32
+
+#13
+Windows_Processes_Basics_1
+What Sysinternals tool shows malware persistence locations in tabs within its GUI?
+autoruns
+
+#14
+Windows_Processes_Basics_2
+What Sysinternals tool is used to investigate processes?
+procexp
+
+#15
+Windows_Processes_Basics_3
+What Sysinternals tool can be used to investigate network connection attempts?
+tcpview
+
+#16
+Windows_Processes_Basics_4
+What Sysinternals tool can view permissions?
+AccessChk
+
+#17
+Windows_Processes_Basics_5
+What Sysinternals tool allows us to view and modify handles?
+Handle
+
+#18
+Windows_Processes_Basics_6
+What is the default Windows user directory for files downloaded from the internet? The flag is the folder name only.
+Downloads
+
+#19
+Windows_Processes_Basics_7
+What is the default Windows download directory that everyone has access to? The flag is the absolute path to the directory.
+C:\users\public\downloads
+
+#20
+Windows_Processes_Basics_8
+What Sysinternals tool shows service load order?
+LoadOrder
+
+#21
+Windows_Processes_Basics_9
+What is the service name of Windows Defender Firewall?
+MpsSvc
+
+#22
+Windows_Processes_Basics_10
+What SysInternals tool reports .dlls loaded into processes?
+ListDLLs
+
+#23
+
+
+#24
+
+#25
+
+#26
+
+#27
+
+#28
+
+#29
+
+#30
+
+#31
+
+#32
+
+#33
+
+#34
+
+#35
+
+#36
+
+###############################END###############################
+###############################Windows UAC###############################
+#1
+Windows_UAC_Basics_1
+What Sysinternals tool will allow you to view a file's manifest?
+Sigcheck
+
+#2
+Windows_UAC_Basics_2
+What is the RequestedExecutionLevel for an application to run with the same permissions as the process that started it?
+
+
+#3
+
+#4
+
+#5
+
+#6
+
+#7
+
+#8
+
+###############################END###############################
+###############################BLANK###############################
+#1
+
+#2
+
+#3
+
+#4
+
+#5
+
+#6
+
+#7
+
+###############################END###############################
+##############################################################END OF DAY 6##############################################################
 
 
 

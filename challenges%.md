@@ -38,7 +38,7 @@
 
 # 11_windows_services
 
-20/45
+25/45
 
 
 

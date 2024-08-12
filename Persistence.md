@@ -281,9 +281,10 @@ netstat -anob | more
 
 
 
+## SYSINTERNALS
 
-
-
+pslist /?
+pslist -s 100 -r 10
 
 
 

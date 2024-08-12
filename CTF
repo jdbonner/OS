@@ -1564,6 +1564,9 @@ What SysInternals tool reports .dlls loaded into processes?
 ListDLLs
 
 #23
+Windows_Hidden_Processes_1
+There is malware on the system that is named similarly to a legitimate Windows executable. There is a .dll in the folder that the malware runs from. The flag is the name of the .dll.
+Reminder: All challenges are done using Workstation1.
 
 
 #24
@@ -1650,7 +1653,7 @@ HKLM\System\CurrentControlSet\Services
 Windows_Services_Basics_5
 What registry subkey holds a service's .dll location?
 The flag is the subkey name (full path not needed).
-
+Parameters
 
 #6
 

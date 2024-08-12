@@ -1602,11 +1602,18 @@ Sigcheck
 #2
 Windows_UAC_Basics_2
 What is the RequestedExecutionLevel for an application to run with the same permissions as the process that started it?
-
+asInvoker
 
 #3
+Windows_UAC_Basics_3
+What RequestedExecutionLevel will prompt the user for Administrator credentials if they're not a member of the Administrator's group?
+requireAdministrator
+
 
 #4
+Windows_UAC_Basics4
+What registry key holds UAC values?
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
 
 #5
 
@@ -1617,16 +1624,33 @@ What is the RequestedExecutionLevel for an application to run with the same perm
 #8
 
 ###############################END###############################
-###############################BLANK###############################
+###############################Windows Services###############################
 #1
+Windows_Services_Basics_1
+What command-line (cmd) command will show service information?
+sc query
 
 #2
+Windows_Services_Basics_2
+What command-line (cmd) command will show all services, running or not running?
+The flag is the full command, for all services.
+sc queryex type=service state=all
 
 #3
+Windows_Services_Basics_3
+What PowerShell command will list all services?
+Get-service
 
 #4
+Windows_Services_Basics_4
+What registry location holds all service data?
+HKLM\System\CurrentControlSet\Services
 
 #5
+Windows_Services_Basics_5
+What registry subkey holds a service's .dll location?
+The flag is the subkey name (full path not needed).
+
 
 #6
 

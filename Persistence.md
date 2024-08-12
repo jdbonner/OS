@@ -39,6 +39,261 @@ the boot
 bcdedit
 
 
+
+
+
+## processes
+
+### PWSHLL PROCESS commands
+
+
+View all Processes, not sorted.
+Get-Process
+
+
+View all Processes, sort them by PID.
+Get-Process | Sort -Property Id | more
+
+
+View all processes, but sort by PID and only show the properties I define.
+Get-Process | Select Name, Id, Description | Sort -Property Id | more
+
+
+View only the processes I define and sort by PID
+Get-Process SMSS,CSRSS,LSASS | Sort -Property Id
+
+
+View modules/DLLs used by defined process and their file locations.
+Get-Process chrome | foreach {$_.modules} | more
+Get-Process -Name "*chrome*" | Select-Object -ExpandProperty Modules | more
+
+
+View only modules/DLLs used by Chrome with "chrome" in the name and their file locations.
+Get-Process chrome | foreach {$_.modules} | Where-Object ModuleName -like '*chrome*' | more
+Get-Process -Name "*chrome*" | Select-Object -ExpandProperty Modules | Where-Object ModuleName -like '*chrome*' | more
+Pipe in a ft -wrap to see full file name/path.
+
+
+Use the Get-Ciminstance Win32_Process cmdlet to veiw processes with PPID
+1) View Process instances with Win32 process.
+Get-Ciminstance Win32_Process
+
+
+2) View the additional Properties with Get-Member
+Get-CimInstance Win32_Process | Get-Member
+
+
+3) View the processes with PID and PPID sorted by PID
+Get-CimInstance Win32_Process | select name,ProcessId,ParentProcessId | sort processid
+
+
+View an instance of all Win32 (system) services.
+Get-Ciminstance Win32_service | Select Name, Processid, Pathname | more
+Pipe in ft -wrap to see full file name/path
+Get-Ciminstance Win32_service | Select Name, Processid, Pathname | ft -wrap | more
+
+
+
+
+Powershell process and DLLs
+
+Which Windows commands let us view processes?
+PowerShell: Get-Process - Microsoft Reference
+CMD: tasklist
+
+
+View all Processes, not sorted.
+Get-Process
+
+
+View all Processes, sort them by PID.
+Get-Process | Sort -Property Id | more
+
+
+View all processes, but sort by PID and only show the properties I define.
+Get-Process | Select Name, Id, Description | Sort -Property Id | more
+
+
+View only the processes I define and sort by PID
+Get-Process SMSS,CSRSS,LSASS | Sort -Property Id
+
+
+View modules/DLLs used by defined process and their file locations.
+Get-Process chrome | foreach {$_.modules} | more
+Get-Process -Name "*chrome*" | Select-Object -ExpandProperty Modules | more
+
+
+View only modules/DLLs used by Chrome with "chrome" in the name and their file locations.
+Get-Process chrome | foreach {$_.modules} | Where-Object ModuleName -like '*chrome*' | more
+Get-Process -Name "*chrome*" | Select-Object -ExpandProperty Modules | Where-Object ModuleName -like '*chrome*' | more
+Pipe in a ft -wrap to see full file name/path.
+
+Use the Get-Ciminstance Win32_Process cmdlet to veiw processes with PPID
+1) View Process instances with Win32 process.
+Get-Ciminstance Win32_Process
+
+2) View the additional Properties with Get-Member
+Get-CimInstance Win32_Process | Get-Member
+
+3) View the processes with PID and PPID sorted by PID
+Get-CimInstance Win32_Process | select name,ProcessId,ParentProcessId | sort processid
+
+
+View an instance of all Win32 (system) services.
+Get-Ciminstance Win32_service | Select Name, Processid, Pathname | more
+Pipe in ft -wrap to see full file name/path
+Get-Ciminstance Win32_service | Select Name, Processid, Pathname | ft -wrap | more
+
+
+View all processes
+tasklist
+
+Display verbose task information in the output
+tasklist /v
+
+Display service information for each process without truncation
+tasklist /svc
+
+
+Display modules/dlls associated to all processes.
+tasklist /m | more
+
+Display modules/dlls associated to a specific process.
+tasklist /m /fi "IMAGENAME eq chrome.exe"
+
+
+Formating options
+tasklist /fo:{table|list|csv}`
+tasklist /fo:table | more
+tasklist /fo:list | more
+tasklist /fo:csv | more
+
+
+Filtering for specific string/process
+tasklist /fi "IMAGENAME eq lsass.exe"
+
+
+## Viewing services
+
+### commands
+
+In Powershell:
+Get-Ciminstance - Microsoft Reference
+Get-Service - Microsoft Reference
+
+
+In Command Prompt:
+net start - Shows currently running services
+sc query - Microsoft Reference
+
+
+View only system services and display Name, PID, and the path they are initiated from.
+Get-Ciminstance Win32_service | Select Name, Processid, Pathname | more
+Pipe in a ft -wrap to see full pathname.
+
+
+View all services.
+Get-service
+
+
+View a defined service, showing all properties in list format.
+get-service ALG | format-list *
+
+
+View only currently running services.
+Get-Service | Where-Object {$_.Status -eq "Running"}
+
+
+View Services
+sc query
+
+
+View extended information for all services.
+sc queryex type=service
+
+
+View extended information for all inactive services.
+sc queryex type=service state=inactive
+
+
+View all currently running services.
+net start
+
+
+## Scheduled tasks
+### commands
+
+View all properties of the first scheduled task.
+Powershell
+Get-ScheduledTask | Select * | select -First 1
+command line
+schtasks /query /tn "IchBinBosh" /v /fo list
+
+What are some Registry keys that can be used for autoruns?
+Registry Keys Locations, Locations connected with Services.
+HKLM\Software\Microsoft\Windows\CurrentVersion\Run - Local Machine
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKLM\System\CurrentControlSet\Services
+
+Remember that the Users have individual Hives with autoruns as well as the Current User.
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run - Current User
+HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKU\<sid>\Software\Microsoft\Windows\CurrentVersion\Run - Specific User
+HKU\<sid>\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+The order in which services are loaded can be adjusted.
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\ServiceGroupOrder
+HKEY_LOCAL_MACHINE\CurrentControlSet\Control\GroupOrderList
+
+
+
+Create Task to open listening Port via the PowerShell Process.
+Opens port listening on port 6666 every 15 minutes.
+1. In CMD, run the following.
+schtasks /Create /TN IchBinBosh /SC MINUTE /MO 15 /TR "powershell.exe -win hidden -encode JABMAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAFMAeQBzAHQAZQBtAC4ATgBlAHQALgBTAG8AYwBrAGUAdABzAC4AVABjAHAATABpAHMAdABlAG4AZQByACgANgA2ADYANgApADsAJABMAC4AUwB0AGEAcgB0ACgAKQA7AFMAdABhAHIAdAAtAFMAbABlAGUAcAAgAC0AcwAgADYAMAA="
+2. *If the script stops working* - run the following commands instead in Powershell to create a listening port:
+$command = '$L=New-Object System.Net.Sockets.TcpListener(6666);$L.Start();Start-Sleep -s 60'
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($command)
+$encodedCommand = [Convert]::ToBase64String($bytes)
+powershell.exe -encodedCommand $encodedCommand
+
+In Command Prompt
+schtasks /query | select-string -pattern IchBinBosh -Context 2,4
+
+In PowerShell
+Get-ScheduledTask | Select * | select-string -pattern IchBinBosh -Context 2,4
+
+In GUI
+Show in either Task Scheduler or AutoRuns.
+
+### Network Connection
+
+Show all Connections in the "Established" state.
+Get-NetTCPConnection -State Established
+
+
+Show netstat help and point out the following:
+netstat /?
+
+
+Displays all TCP/UDP connections with ports in numerical form with PID and executable associated to the connections
+netstat -anob | more
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Linux
 
 /etc/init

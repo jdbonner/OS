@@ -1691,6 +1691,8 @@ Identify the file mapped to the fourth file descriptor (handle) of the cron proc
 HINT: There might be multiple cron processes, but only one with the answer.
 Flag format: /absolute/path
 sudo lsof | grep cron | sort
+COMMAND     PID   TID       USER   FD      TYPE             DEVICE SIZE/OFF       NODE NAME
+cron       1336             root    3u      REG               0,19        5      11398 /run/crond.pid
 /run/crond.pid
 
 #6
@@ -1698,19 +1700,74 @@ Linux Processes 6
 Identify the permissions that cron has on the file identified in Processes 5.
 HINT: Read the man page for lsof to understand permissions.
 Flag format: If more than one, list the permissions comma separated, no spaces
-
+sudo lsof | grep cron | sort | head
+COMMAND     PID   TID       USER   FD      TYPE             DEVICE SIZE/OFF       NODE NAME
+cron       1336             root    3u      REG               0,19        5      11398 /run/crond.pid
+ls -l /run/crond.pid
+-rw-r--r-- 1 root root 5 Aug  5 02:12 /run/crond.pid
+r,w
 
 #7
+Linux Processes 7
+dentify the names of the orphan processes on the SysV system.
+NOTE: Remember, orphan processes spawn and die periodically. Try monitoring the processes list with top or htop to find them.
+Flag format: in alphabetical order with all non-alphabetic characters removed: Name,Name,Name,Name
+HINT: Only character names!
+htop
+Aragorn,BruceWayne,Eowyn,Tolkien
 
 #8
+Linux Processes 8
+Locate zombie processes on the SysV system.
+Identify the zombie processes' parent process.
+NOTE: Remember, zombie processes only live until the parent process kills and removes them from the system’s process table. Try monitoring the processes list with top or htop to find them.
+Flag format: /absolute/path
+htop 
+#sort by S
+#tree
+#watch for zombies
+#the last parent that is not a zombie 
+/bin/funk
+
+
 
 #9
+Linux Processes 9
+Locate the strange open port on the SysV system.
+Identify the command line executable and its arguments.
+Flag format: /executable/path -arguments
+htop
+/bin/netcat -lp 9999
+
 
 #10
+Linux Process Proc Dir 1
+Examine the process list to find the ssh process. Then, identify the symbolic link to the absolute path for its executable in the /proc directory.
+The flag is the absolute path to the symbolic link, and the file it is linked to.
+Flag format: /absolute/path,/absolute/path
+ps -elf | grep sshd
+ls -l /proc/1904
+/proc/1904/exe,/usr/sbin/sshd
 
 #11
+Linux Process Proc Dir 2
+Identify the file that contains udp connection information. Identify the process using port 123.
+For the flag, enter:
+Process name
+File descriptor number for the udp socket
+Its permissions as shown in lsof
+Flag format: name,#,permission
+sudo lsof | grep UDP 
+ntp,17,u
 
 #12
+Linux Processes 10
+Locate the strange open port on the SysV system.
+Identify how the process persists between reboots.
+The flag is the absolute path for the file that contains the persistence mechanism, and the configuration option.
+HINT: Persistence is defined here
+Flag format: filepath,configuration_option
+
 
 #13
 

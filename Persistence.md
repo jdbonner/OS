@@ -315,6 +315,81 @@ xxd -l 1 mbroken
 > the MBR will always end in 55AA. Otherwise will indicate a problem.
 
 
+### process validity
+
+ps 
+top
+htop
+ps -elf
+For user-space processes /sbin/init ( PID = 1 )
+For kernel-space processes [kthreadd] ( PID = 2 )
+grep UID /etc/login.defs
+kill -9 <PID> or pkill -9 <process name>
+Stop Process = SIGSTOP(19) (pause signal, let’s you continue later, does not kill process)
+End Process = SIGTERM(15) (termination signal, the right way, the application can intercept this signal and initiate shutdown tasks such as temp file cleanup)
+Kill Process = SIGKILL(9) (kill signal, extreme, only use if SIGTERM doesn’t work, won’t initiate shutdown tasks)
+
+
+Shows some simple commands and switch options to view Linux processes
+ps -elf #Displays processes
+  -e #Displays every process on the system
+  -l #Lists processes in a long format
+  -f #Does a full-format listing
+ps --ppid 2 -lf #Displays only kthreadd processes (so, only kernel-space processes)
+  Processes spawned from kthreadd will always have a PPID of 2
+ps --ppid 2 -Nlf #Displays anything except kthreadd processes (so, only user-space processes)
+  -N #Negates the selection
+ps -elf --forest #Displays processes in an ASCII tree
+  --forest #ASCII art process tree
+
+
+
+disown -a && exit #Close a shell/terminal and force all children to be adopted
+
+
+ps --ppid 1 -lf
+
+List all unit files that systemd has listed as active
+systemctl list-units
+
+List all units that systemd has loaded or attempted to load into memory, including those that are not currently active, add the --all switch:
+systemctl list-units --all
+
+
+
+Two types of cron jobs
+  System cron jobs
+    run as root and rigidly scheduled
+    perform system-wide maintenance tasks (Cleaning out /tmp or rotating logs)
+    controlled by /etc/crontab
+  
+  User cron jobs
+    Use 'crontab’ command to create user cron jobs
+    stored in /var/spool/cron/crontabs/
+
+Viewing File Descriptors
+sudo lsof | tail -30
+
+List all open files for a specific process.
+sudo lsof -c sshd
+
+
+Grab the PID of a process.
+ps -elf | grep sshd
+
+
+List contents for that PID directory.
+sudo ls -l /proc/14139
+
+
+
+
+
+
+
+
+
+
 
 
 

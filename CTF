@@ -1768,10 +1768,45 @@ The flag is the absolute path for the file that contains the persistence mechani
 HINT: Persistence is defined here
 Flag format: filepath,configuration_option
 
+/sbin/cgmanager --daemon -m name=systemd
+/bin/netcat -lp 9999
+
+14262 root       20   0 48760  2616  2248 S  0.0  0.1  0:00.00 │  ├─ /usr/sbin/CRON
+14268 witch_kin  20   0  4276   740   672 S  0.0  0.0  0:00.00 │  │  └─ /bin/sh -c /home/witch_king/camlindon > /dev/null 2>&1
+14274 witch_kin  20   0 11128  2844  2656 S  0.0  0.1  0:00.00 │  │     └─ /bin/bash /home/witch_king/camlindon
+14278 witch_kin  20   0 11128  2264  2008 S  0.0  0.1  0:00.00 │  │        └─ /bin/bash /home/witch_king/camlindon
+14290 witch_kin  20   0  6300  1700  1584 S  0.0  0.1  0:00.00 │  │           └─ nc -lw10 127.0.0.1 -p 1234
+14260 root       20   0 48760  2616  2248 S  0.0  0.1  0:00.00 │  └─ /usr/sbin/CRON
+14267 Dunlendin  20   0  4276   736   668 S  0.0  0.0  0:00.00 │     └─ /bin/sh -c /home/Dunlendings/offering > /dev/null 2>&1
+14272 Dunlendin  20   0 11124  2776  2580 S  0.0  0.1  0:00.00 │        └─ /bin/bash /home/Dunlendings/offering
+14277 Dunlendin  20   0 11128  2256  1996 S  0.0  0.1  0:00.00 │           └─ /bin/bash /home/Dunlendings/offering
+14293 Dunlendin  20   0  6300  1584  1464 S  0.0  0.1  0:00.00 │              └─ netcat -w5 127.0.0.1 1234
+
+1964qq
 
 #13
+Linux Process Proc Dir 3
+Identify one of the human-readable file handles by the other program that creates a zombie process.
+NOTE: Remember, zombie processes only live until the parent process kills them. Try monitoring the processes list with top or htop to find them.
+The flag is the text from one of the files it reads.
+htop
+#figure out the process that is making the zombies
+ └+ ________Nazgul________
+#get the pid
+sudo lsof | grep <pid>
+#look for the file that meets the proper type.
+cat /opt/mysoul
+and in the darkness bind them
 
 #14
+Linux Process Find Evil 1
+Scenario: The Villains group has been chanting offerings to their new leader at regular intervals over a TCP connection.
+Task: Identify their method of communication and how it is occurring. Locate the following artifacts: ** The chant/text used by each villain (include spaces) ** The new Lord receiving the offering ** The IP address and port that the offering is received over
+Flag format: chant text,new Lord,IP:port
+Machine: Minas_Tirith
+sudo lsof | grep chant
+offering  17496           Balrog    9w      REG              254,1        0     142174 /home/Balrog/chantlock
+netcat    17538           Balrog    9w      REG              254,1        0     142174 /home/Balrog/chantlock
 
 #15
 

@@ -6030,14 +6030,14 @@ Look for logged on users who are logging in outside of normal hours
 ```
 ### 7.1.2 Interpretting File Descriptors
   This information and more available in the lsof man page.
-  
+  ```
   # - The number in front of flag(s) is the file descriptor number used by the process associated with the file
   u - File open with Read and Write permission
   r - File open with Read permission
   w - File open with Write permission
   W - File open with Write permission and with Write Lock on entire file
   mem - Memory mapped file, usually for share library
-  
+  ```
 ### 7.2 - Navigating Proc Directory
   List all the proc directories.
   ```

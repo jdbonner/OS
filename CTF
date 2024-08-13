@@ -1661,7 +1661,71 @@ Parameters
 
 ###############################END###############################
 ##############################################################END OF DAY 6##############################################################
+##############################################################DAY 7##############################################################
+###############################Linux Process Validity###############################
+#1
+Linux Processes 1
+What is the process ID (PID) of the SysV Init daemon?
+1
 
+#2
+Linux Processes 2
+How many child processes did SysV Init daemon spawn?
+
+
+#3
+Linux Processes 3
+Identify all of the arguments given to the ntpd daemon (service) using ps.
+Format: List all options with parameters (include numbers).
+ps -elf | grep ntpd
+-p /var/run/ntpd.pid -g -u 105:109
+
+#4
+Linux Processes 4
+What is the parent process to Bombadil’s Bash process? (name of the binary, not the absolute path)
+sshd
+
+#5
+Linux Processes 5
+Identify the file mapped to the fourth file descriptor (handle) of the cron process.
+HINT: There might be multiple cron processes, but only one with the answer.
+Flag format: /absolute/path
+sudo lsof | grep cron | sort
+/run/crond.pid
+
+#6
+Linux Processes 6
+Identify the permissions that cron has on the file identified in Processes 5.
+HINT: Read the man page for lsof to understand permissions.
+Flag format: If more than one, list the permissions comma separated, no spaces
+
+
+#7
+
+#8
+
+#9
+
+#10
+
+#11
+
+#12
+
+#13
+
+#14
+
+#15
+
+#16
+
+#17
+
+#18
+
+###############################END###############################
+##############################################################END OF DAY 7##############################################################
 
 
 

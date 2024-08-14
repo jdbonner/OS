@@ -1996,14 +1996,19 @@ Flag format: -argument
 Windows_Browser_Artifacts_2
 Find the questionable website that a user browsed to (using Chrome), that appears to be malicious. *Note: There are more than one users on the box.
 Machine: Workstation2 (ssh from Admin_Station)
-
+get-content 'C:\Users\student\AppData\Local\Google\Chrome\user Data\default\history'
+https://www.exploit-db.com
 
 #22
 Windows_Recent_Files_2
 There is a file that was recently opened that may contain PII.
 Get the flag from the contents of the file.
 Hint: We're not interested in numbers.
+reg query hkcu\software\microsoft\windows\currentversion\explorer\recentdocs
+get-item 'Registry::\HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.*'
+[System.Text.Encoding]::Unicode.GetString((gp "REGISTRY::HKEY_USERS\*\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt")."6")
 Flag, Found A.
+
 
 #23
 

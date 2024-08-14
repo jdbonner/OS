@@ -360,6 +360,206 @@ Get-Content 'C:\$Recycle.Bin\S-1-5-21-1584283910-3275287195-1754958050-1005\$R8Q
 ```
 ## Prefetch
 ```
+Prefetch files are created by the windows operating system when an application is run from a specific location for the first time.
+
+Location
+Win7/8/10
+C:\Windows\Prefetch
+
+Get-Childitem -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select -First 8
+
+
+```
+## Jump Lists
+```
+The Windows 7-10 taskbar (Jump List) is engineered to allow users to “jump” or access items they have frequently or recently used quickly and easily.
+
+First time of execution of application.
+
+Creation Time = First time item added to the AppID file.
+
+Last time of execution of application w/file open.
+
+Modification Time = Last time item added to the AppID file.
+
+Location
+Win7/8/10
+
+C:\%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations (C:\Users\king\AppData\Roaming\Microsoft\Windows\Recent)
+
+Show in Explorer:
+C:\%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations (C:\Users\king\AppData\Roaming\Microsoft\Windows\Recent)
+
+Programs/Items that were recently used
+Get-Childitem -Recurse C:\Users\*\AppData\Roaming\Microsoft\Windows\Recent -ErrorAction Continue | select FullName, LastAccessTime
+Get-Childitem -Recurse $env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Recent -ErrorAction SilentlyContinue | select FullName,LastAccessTime
+-OR-
+Make sure sysinternals is mounted or unzipped
+Gci C:\users\student\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations | % {z:\strings.exe -accepteula $_} >> c:\recentdocs.txt
+
+```
+
+## Recent files
+```
+Registry Key that will track the last files and folders opened and is used to populate data in “Recent” menus of the Start menu.
+Tracks last 150 files or folders opened.
+
+Location
+HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+
+HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt
+
+
+#COMMANDS
+
+#Query the Hex Value Stored in the Key
+Get-Item 'Registry::\HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.*'
+#With the * we can see the types of files/ information that was recently viewed.
+Get-Item 'Registry::\HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt'
+
+#Converting a Single Value from Hex to Unicode
+[System.Text.Encoding]::Unicode.GetString((gp "REGISTRY::HKEY_USERS\*\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt")."0")
+
+Convert all of a users values from HEX to Unicode
+Get-Item "REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt" | select -Expand property | ForEach-Object {
+    [System.Text.Encoding]::Default.GetString((Get-ItemProperty -Path "REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt" -Name $_).$_)
+
+```
+## Browser Artifacts
+```
+Stores details for each user account. Records number of times a site is visited (frequency). History will record the access to the file on the website that was accessed via a link. Many sites in history will list the files that were opened from remote sites and downloaded to the local system.
+
+Location
+Win7/8/10:
+%USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\history
+
+#Show Location in Explorer so students have a visual reference of where they’re pulling this information from.
+Location: C:\Users\andy.dwyer\AppData\Local\Google\Chrome\User Data\Default\
+
+#AOI
+URLS
+Current Session/Tabs
+Top Sites
+
+#BE SURE TO ACCEPT EULA
+-accepteula
+
+Z:\strings.exe 'C:\users\andy.dwyer\AppData\Local\Google\Chrome\User Data\Default\History' -accepteula
+
+```
+
+## Auditing
+
+The Auditing Windows portion of this FG covers the concept of Windows Auditing using native tools along with the analysis of generated artifacts using cmd, powershell, or the GUI based program Eventviewer.
+
+Enable auditing on a text file Examples:
+```
+PS C:\Users\andy.dwyer\Desktop\Audit> new-item C:\Users\andy.dwyer\Desktop\Auditing.txt
+    Directory: C:\Users\andy.dwyer\Desktop
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         6/7/2021   2:45 PM              0 Auditing.txt
+```
+#note location
+#see demo
+
+## Event Logs
+```
+#events that happen in your computer
+
+Locations
+*.evtx files accessed by:
+Windows Event View Application
+Get-eventlog or Get-WinEvent in Powershell
+wevtutil in Command Prompt
+
+#COMMANDS
+
+#Powershell
+auditpol
+auditpol /get /category:"Object Access"
+auditpol /set /subcategory:"File System"
+auditpol /set /subcategory:"File System" /success:disable
+# Command Prompt: Checking System Wide Auditing Policy for all objects
+auditpol /get /category:* 
+
+#View Event Logs in Powershell
+#Shows the newest/last 10 entries in the system log. Point out what the three dots (…​) mean and how to print the rest of the entry. (ex. | format-table -wrap)
+Get-EventLog -LogName System -Newest 10
+#Add the format-table -wrap option to print the truncated part of the entry.
+Get-EventLog -LogName System -Newest 3 | Format-Table -Wrap
+
+#Search the Security Event Log and show the entire message
+#This is all of the information currently in the Security log. Point out the abundance of information that would need to be parsed through.
+Get-Eventlog -LogName Security | ft -wrap
+
+#Search through the entire Security log for a specific string
+#Explain that you search through all of the log entries using findstr or select-string for specific strings, the biggest difference between the two is that findstr has a case insensitive option — findstr /i <string>
+PS C:\> Get-Eventlog -LogName Security | ft -wrap | findstr /i StR1nG 
+
+
+Get-EventLog is limited to the default Windows Logs of Security, Application, System,and Windows Powershell (Windows 8.1 and up)
+Get-Winevent will cover all the default eventlogs and all of the remaining custom application logs
+
+
+#Finding Log Type to Query
+#Lists all of the logs available to Winevent
+Get-WinEvent -Listlog *
+#Shows the number of logs, point out the volume of possible information
+(Get-WinEvent -Listlog *).count
+#Search through the list of logs to find logs that pertain to Security
+Get-WinEvent -Listlog * | findstr /i "Security"
+
+#Checking If a User Logged on
+#Using Get-WinEvent with -FilterHashtable allows you to filter for more than one criteria. In this instance filter for the Security log and the id of 4624 (discussed below).
+Get-Winevent -FilterHashtable @{logname='Security';id='4624'} | ft -Wrap
+#Same command as above with a specific string search using findstr /i.
+Get-Winevent -FilterHashtable @{logname='Security';id='4624'} | ft -Wrap | findstr /i "generated"
+
+
+#Checking Powershell Operational Logs
+#Output shows searching through PowerShell Operational logs for a specific string.
+Get-WinEvent Microsoft-Windows-PowerShell/Operational | Where-Object {$_.Message -ilike "*RunspacePool*"} | Format-List
+#Command used to search through PowerShell Operational logs for a specific Pipeline ID.
+Get-WinEvent Microsoft-Windows-PowerShell/Operational | Where-Object {$_.Message -ilike "*Pipeline ID = ##"} | Format-List
+
+
+
+#CMD
+*Viewing Logs in Command Prompt *
+#Use wevtutil (Windows Event Utility) to show all logs available to the command prompt tool using el (enumerate logs)
+wevtutil el
+#Shows the number of Windows logs, you can use find with \c to count the lines containing the following string \v to invert the following string "" (a null string)
+wevtutil el | find /c /v ""
+#Shows the Security Log information
+wevtutil gli security
+#Shows the last 3 events with qe (query event) from the security log and view in human readable format.
+wevtutil qe security /c:3 /f:text
+
+
+```
+## Powershell Artifacts
+```
+PowerShell Transcript is a feature that creates a record of all or part of a PowerShell session to a text file.
+
+#Creates a text file and records part of all of a PowerShell session.
+Start-Transcript
+
+
+#Shows all of the commands entered during the current session.
+Get-History
+
+
+Location:
+C:\Users\username\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+
+#Use Get-Content to access the the history
+#Prints the contents of the history file
+Get-Content "C:\users\$env:username\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt"
+
+#How do I enable Script Block logging?
+reg add HKLM\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging\ /v EnableScriptBlockLogging /t REG_DWORD /d 1 /f
+
 
 ```
 

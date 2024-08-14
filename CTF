@@ -842,6 +842,8 @@ HINT: What are the valid numerical values of each octet in an IP address?
 
 '^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$'
 
+
+
 #32
 Linux Basics Regular Expressions4
 File: home/garviel/numbers
@@ -1950,7 +1952,9 @@ BAM settings are stored in different registry locations based on the version of 
 Windows_Last_Access
 Figure out the last access time of the hosts file.
 Flag format: mm/dd/yyyy
-
+(Get-Item "C:\Windows\System32\drivers\etc\hosts").LastAccessTime
+        Output - Wednesday, August 14, 2024 12:11:09 PM
+    Answer : 08/14/2024
 
 #13
 Windows_Prefetch_1
@@ -2013,16 +2017,44 @@ Flag, Found A.
 
 
 #23
+Windows_Bam_2
+Enter the full path of the program that was run on this computer from an abnormal location.
+get-item HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\*
+C:\Windows\Temp\bad_intentions.exe
 
 #24
+Windows_Prefetch_2
+Enter the name of the questionable file in the prefetch folder.
+get-childitem -Path 'C:\Windows\Prefetch' -ErrorAction Continue
+DARK_FORCES-8F2869FC.pf
 
 #25
+Windows_Prefetch_3
+What is the creation time of the questionable file in the prefetch folder?
+Flag format: mm/dd/yyyy
+2/23/2022
 
 #26
+Windows_Recycle_Bin_3
+Recover the flag from the Recycle Bin. Enter the name of the recycle bin file that contained the contents of the flag, and the contents of the deleted file. Include the file extension in your answer.
+*Hint: "Don't"
+Flag format: filename,contents
+#cd into the $RECYCLE.bin
+#dir -force to get to files in desired user
+get-content '$RZDAQ4U.txt'
+$RZDAQ4U.txt,DontTrashMeyo
 
 #27
+Windows_Jump_Lists
+Find the file in the jump list location that might allow privilege escalation.
+
 
 #28
+Windows_Logs_4
+Check event logs for a "flag" string.
+Machine: file-server
+
+
 
 ###############################END###############################
 

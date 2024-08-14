@@ -1671,7 +1671,10 @@ What is the process ID (PID) of the SysV Init daemon?
 #2
 Linux Processes 2
 How many child processes did SysV Init daemon spawn?
-
+htop
+#sort by ppid
+#count
+24
 
 #3
 Linux Processes 3
@@ -1748,6 +1751,8 @@ Flag format: /absolute/path,/absolute/path
 ps -elf | grep sshd
 ls -l /proc/1904
 /proc/1904/exe,/usr/sbin/sshd
+
+
 
 #11
 Linux Process Proc Dir 2

@@ -1885,6 +1885,142 @@ cat .bash_logout
 
 ###############################END###############################
 ##############################################################END OF DAY 7##############################################################
+##############################################################DAY 8##############################################################
+###############################Windows Auditing and Logging###############################
+#1
+Primer_Auditing_1
+Logging, Auditing and Monitoring are often confused with each other but are distinctly different. Which term refers to real-time analysis and is often accomplished with a Security Event Information Management system (SIEM)?
+Monitoring
+
+#2
+Primer_Auditing_2
+What term is most appropriate when referring to the process of reviewing log files or other records for specified period?
+Auditing
+
+#3
+Primer_Auditing_3
+"Complete the following path to the Windows System Log which records system events e.g. startup and shutdown: %systemroot%\System32_______________
+WinEvt\Logs\System.evtx
+
+#4
+Primer_Auditing_4
+Which Windows log contains either success or failures and can be configured to record failed logon attempts?
+Security
+
+#5
+Primer_Auditing_5
+"Which Windows account is the only account to have WRITE-APPEND access to Windows event logs?"
+System
+
+#6
+Primer_Auditing_6
+What is parsed in an NTFS object's security descriptor, by the Security Reference Monitor (SRM), to determine if an audit entry will be created in the Windows Security Log?
+SACL
+
+#7
+Primer_Auditing_7
+Which registry key holds the audit policy configuration? **Hint - Give full path
+HKEY_LOCAL_MACHINE\SECURITY\Policy\PolAdtEv
+
+#8
+Primer_Auditing_8
+Which sysinternals tool is used to parse logs?
+PsLogList
+
+#9
+Windows_Browser_Artifacts_1
+What Sysinternals tool will allow you to read the SQLite3 database containing the web history of chrome?
+strings.exe
+
+#10
+Windows_Recent_Files_1
+What is the registry location of recent docs for the current user?
+HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+
+
+#11
+Windows_Bam_1
+Challenge only allows ONE attempt
+BAM settings are stored in different registry locations based on the version of Windows 10. What version of Windows 10 is workstation2 running? The answer is the 4 digit Windows 10 release (version) number.
+1803
+
+#12
+Windows_Last_Access
+Figure out the last access time of the hosts file.
+Flag format: mm/dd/yyyy
+
+
+#13
+Windows_Prefetch_1
+What is the literal path of the prefetch directory?
+C:\Windows\Prefetch
+
+#14
+Windows_Recycle_Bin_1
+In the Recycle Bin, there is a file that contains the actual contents of the recycled file. What are the first two characters of this filename?
+get-wmiobject win32_useraccount | select name,sid
+$R
+
+#15
+Windows_Recycle_Bin_2
+In the Recycle Bin, there is a file that contains the original filename, path, file size, and when the file was deleted. What are the first two characters of this filename?
+$I
+
+#16
+Windows_UserAssist_1
+What are the first 8 characters of the Globally Unique Identifier (GUID) used to list applications found in the UserAssist registry key (Windows 7 and later)?
+CEBFF5CD
+
+#17
+Windows_UserAssist_2
+What cipher method are UserAssist files encoded in?
+ROT13
+
+#18
+Windows_Logs_1
+What main Windows log would show invalid login attempts?
+Security
+
+#19
+Windows_Logs_2
+What main Windows log will show whether Windows updates were applied recently?
+System
+
+#20
+Windows_Logs_3
+When reading logs, you may notice ... at the end of the line where the message is truncated. What format-table switch/argument will display the entire output?
+Flag format: -argument
+-Wrap
+
+#21
+Windows_Browser_Artifacts_2
+Find the questionable website that a user browsed to (using Chrome), that appears to be malicious. *Note: There are more than one users on the box.
+Machine: Workstation2 (ssh from Admin_Station)
+
+
+#22
+Windows_Recent_Files_2
+There is a file that was recently opened that may contain PII.
+Get the flag from the contents of the file.
+Hint: We're not interested in numbers.
+
+
+#23
+
+#24
+
+#25
+
+#26
+
+#27
+
+#28
+
+###############################END###############################
+
+
+##############################################################END OF DAY 8##############################################################
 
 
 

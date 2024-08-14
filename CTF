@@ -707,6 +707,7 @@ This file contains encrypted contents. Identify its file type, then decode its c
 Hint: Use OpenSSL
 Research: https://www.openssl.org/docs/man1.1.1/man1/enc.html
 Reminder: All challenges are done using the Terra box.
+DeCrypt
 
 #14
 Linux Basics LFS Hierarchy7
@@ -768,12 +769,13 @@ Linux Basics Permissions 4
 Locate the file within /media/Bibliotheca that is modifiable by the only user that is part of the chapter group,
 but not part of the lodge group.
 Hint: Not the hidden file...
-
+Codex_Astartes
 
 #23
 Linux Basics Permissions 5
 Identify the file within /media/Bibliotheca where the owning group has more rights than the owning user.
-
+ls -lisa /media/bibliotheca -R
+Codex_Imperium
 
 #24
 Linux Basics Permissions 6

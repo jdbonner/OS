@@ -287,10 +287,84 @@ pslist /?
 pslist -s 100 -r 10
 
 
+## Artifacts
+```
+Artifacts are objects or areas in the computer system containting information relevant to activities of the users.
+Security Identifier Sids, are used for the user specificregistry locations.
+get-localUser | select name,sid
+get-localuser
+get-wmiobject
+```
+## UserAssist
+```
+UserAssist keys are located in:
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\Count\
+and encoded in ROT13
 
 
+CEBFF5CD-ACE2-4F4F-9178-9926F41749EA A list of applications, files, links, and other objects that have been accessed
+F4E57C4B-2036-45F0-A9AB-443BCFE33D9F Lists the Shortcut Links used to start programs
+
+Example:
+Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count"
+```
+## Windows Background Actiity Moderator (BAM)
+```
+a Windows service that Controls activity of background applications.
+BAM Provides the following:
+full path of an executable
+last execution date/time.
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings #On 1809 and Newer
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam\UserSettings #On 1803 and be
+
+COMMANDS:
+
+#cmd command
+systeminfo
+
+#powershell
+Get-Computerinfo
+Get-ComputerInfo | select osname,osversion,OsHardwareAbstractionLayer
+
+#BAM entries for every user on the system
+Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\state\UserSettings\*
+
+#Output shows all users BAM artifacts
+wmic useraccount  get caption,sid | more
+Get-Itemproperty 'HKLM:\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-21-1584283910-3275287195-1754958050-1005'
+
+```
+## Recycle Bin
+```
+A place where deleted things go.
+
+recycle bin is identified by:
+SID - determines which user deleted it
+Timestamp - When it was deleted
+$RXXXXXX - content of deleted files
+$IXXXXXX - original PATH and name
+
+C:\$Recycle.bin (Hidden System Folder)
+
+#COMMANDS
+
+#Find the Contents of the Recycle Bin
+Get-Childitem 'C:\$RECYCLE.BIN' -Recurse -Verbose -Force | select FullName
+
+#Match SID to USER:
+wmic useraccount where 'sid="S-1-5-21-1584283910-3275287195-1754958050-1005"' get name
+
+#To find Recycle Bin artifacts for a specific user, match the SID, then append it to the previous command:
+Get-Content 'C:\$Recycle.Bin\S-1-5-21-1584283910-3275287195-1754958050-1005\$R8QZ1U8.txt'
+
+```
+## Prefetch
+```
+
+```
 
 
+##################################################################
 
 
 

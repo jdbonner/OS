@@ -2060,7 +2060,153 @@ Machine: file-server
 
 
 ##############################################################END OF DAY 8##############################################################
+##############################################################DAY 9##############################################################
+###############################BLANK###############################
+#1
+Linux Auditing and Logging XML 1
+File: /home/garviel/output.xml
+Identify the XML element name in the output below
+<scaninfo type="syn" protocol="tcp" numservices="200"
+Flag: The element with start and end tags
+scaninfo
 
+
+#2
+Linux Auditing and Logging XML 2
+Identify one of the XML attributes in the output below
+<scaninfo type="syn" protocol="tcp" numservices="200" services="1-200"/>
+Flag format: value="pair"
+type="syn"
+
+#3
+Linux Auditing and Logging Standards 1
+What RFC is Syslog?
+RFC 5424
+
+#4
+Linux Auditing and Logging Standards 2
+Challenge only allows 3 attempts
+What is the numerical code assigned to the facility dealing with authorization?
+4
+
+#5
+Linux Auditing and Logging Standards 3
+Challenge only allows 3 attempts
+How many severity codes are defined in the standard that defines syslog?
+8
+
+#6
+Linux Auditing and Logging Standards 4
+Challenge only allows 3 attempts
+What severity is assigned to system instability messages?
+Hint: Use the numerical code!
+0
+
+#7
+Linux Auditing and Logging Syslog 1
+Challenge only allows 3 attempts
+Download the attached rsyslog configuration file for the Syslog # challenges.
+In the legacy rules section of the file, what facility is logged to 0.log?
+kernel messages
+
+#8
+Linux Auditing and Logging Syslog 2
+Challenge only allows 3 attempts
+In the legacy rules section of the file, how many severities are logged to 0.log?
+Flag: Total number of severities
+8
+
+#9
+Linux Auditing and Logging Syslog 3
+In the legacy rules section of the file, how many severities are logged to 4min.log?
+List the severities from highest severity (lowest numerical listed) to lowest severity (highest numerical listed) using their severity name.
+Flag format: name,name,name
+Emergency,Alert,Critical,Error,Warning
+
+#10
+Linux Auditing and Logging Syslog 4
+In the legacy rules section of the file, how many severities are logged to 4sig.log?
+List the severities from highest severity (lowest numerical listed) to lowest severity (highest numerical listed), using their severity name.
+Flag format: name,name,name
+Hint: I’m sure they made a man page for this. Read the downloaded file for some links.
+Notice,Informational,Debug
+
+#11
+Linux Auditing and Logging Syslog 5
+Challenge only allows 3 attempts
+What is being logged in not.log?
+Provide the facilities from lowest facility to highest facility numerically, and the severity being logged. (List only the first word for each.)
+Flag format: facility,facility,facility,severity
+mail,clock,NTP,notice
+
+#12
+Linux Auditing and Logging Syslog 6
+Challenge only allows 3 attempts
+What facilities and what severities are being sent to a remote server over a reliable connection using port 514?
+Provide the facility names, number of severities, and the correct destination IP address.
+Flag format: F,F,#,IP
+
+
+#13
+Linux Auditing and Logging Syslog 7
+Challenge only allows ONE attempt
+Use the answer from Syslog 6 for this question.
+Do logs that match this filter ever get saved on the local machine?
+yes
+
+#14
+Linux Auditing and Logging Syslog 8
+What messages are being sent to 10.84.0.1?
+Provide the facility number, the number (amount) of severity codes, and Layer 4 connection type as the answer.
+Flag format: F,S,Layer 4 connection Type
+0,7,UDP
+
+#15
+Linux Auditing and Logging XML 3
+File: /home/garviel/output.xml
+Parse all of the IP addresses from the file using XPATH queries
+https://www.w3schools.com/xml/xpath_intro.asp
+HINT:
+http://xpather.com/
+http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm
+Sample Output (without piping to MD5SUM)
+ addr="XXX.xxx.xxx.xxx"
+ addr="XXX.xxx.xxx.xxx"
+ addr="XXX.xxx.xxx.xxx"
+ addr="XXX.xxx.xxx.xxx"
+ addr="XXX.xxx.xxx.xxx"
+ addr="XXX.xxx.xxx.xxx"
+--TRIMMED--
+Flag format: md5 hash of output
+
+
+#16
+
+#17
+
+
+#18
+
+#19
+
+#20
+
+#21
+
+#22
+
+#23
+
+#24
+
+#25
+
+#26
+
+#27
+
+###############################END###############################
+##############################################################END OF DAY 9##############################################################
 
 
 

@@ -2222,19 +2222,68 @@ HINT:
 https://jqplay.org/
 https://docs.jsonata.org/simple
 https://stedolan.github.io/jq/manual/
-
+cat conn.log | jq .
+cat conn.log | jq . | md5sum
+25ebedf7442e470eaaa48b5f7d5b96f4
 
 #18
+Linux Auditing and Logging JSON 2
+File : /home/garviel/conn.log
+This file is a conn.log made in Zeek (Bro) with data about TCP/IP connections.
+Use jq to locate and count the unique originating endpoint IP addresses in the file. Enter the number of unique originating IP addresses as the flag.
+Flag format: #
+HINT: Use this link to understand the JSON object’s attributes
+
 
 #19
+Linux Auditing and Logging JSON 3
+File: /home/garviel/conn.log
+
+This file is a conn.log made in Zeek (Bro) with data about TCP/IP connections.
+
+Use jq to locate and count connections where the destination IP sent more than 40 bytes to the source IP.
+
+Flag format: #
+#figure out headers
+cat conn.log | jq '.' | head
+#see if the header displays ips
+cat conn.log | jq '."id.orig_h"'
+#sort the ips with unique option
+cat conn.log | jq '."id.orig_h"' | sort -u
+#get the count of ips.
+cat conn.log | jq '."id.orig_h"' | sort -u | wc -l
 
 #20
+Linux Auditing and Logging JSON 3
+File: /home/garviel/conn.log
+
+This file is a conn.log made in Zeek (Bro) with data about TCP/IP connections.
+Use jq to locate and count connections where the destination IP sent more than 40 bytes to the source IP.
+Flag format: #
+cat conn.log | jq 'select(.resp_bytes >= 40).ts' | wc -l
+177
 
 #21
+Linux Auditing and Logging Syslog 9
+Challenge only allows ONE attempt
+Which cron log severity code is saved only to the local machine?
+Flag format: #
+(Continue to reference your 50-cctc.conf file from Syslog1)
+7
 
 #22
+Linux Auditing and Logging Syslog 10
+Challenge only allows 3 attempts
+The emergency messages (only) on the system are sent to what IP Address?
+(Continue to reference your 50-cctc.conf file from Syslog1)
+#look for *.=emerg for the emergency message target
+10.24.0.1
 
 #23
+Linux Auditing and Logging Whut 1
+Use the log file attached to this for all Whut questions.
+How many unique users logged into this machine?
+
 
 #24
 

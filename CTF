@@ -2145,7 +2145,7 @@ Challenge only allows 3 attempts
 What facilities and what severities are being sent to a remote server over a reliable connection using port 514?
 Provide the facility names, number of severities, and the correct destination IP address.
 Flag format: F,F,#,IP
-
+auth,authpriv,8,10.30.0.1
 
 #13
 Linux Auditing and Logging Syslog 7
@@ -2178,11 +2178,50 @@ Sample Output (without piping to MD5SUM)
  addr="XXX.xxx.xxx.xxx"
 --TRIMMED--
 Flag format: md5 hash of output
-
+xpath -q -e '//host/address/@addr' output.xml | md5sum
+0e850f14fc192c5105955ec094287bd2
 
 #16
+Linux Auditing and Logging XML 4
+File: /home/garviel/output.xml
+Select all of the IP addresses and ports using a single XPATH Union Statement
+Pipe the result to md5sum for the flag
+HINT:
+https://carpentries-incubator.github.io/lc-webscraping/
+http://www.tizag.com/xmlTutorial/xpathbar.php
+Sample Output (without piping to MD5SUM)
+ addr="xx.xxx.xx.xx"
+ addr="xx.xxx.xx.xx"
+ addr="xx.xxx.xx.xx"
+ addr="xx.xxx.xx.xx"
+ portid="xx"
+ addr="10.50.29.6"
+ addr="xx.xxx.xx.xx"
+ portid="22"
+--TRIMMED--
+xpath -q -e '//host/address/@addr | //host/ports/port/@portid' output.xml | md5sum
+ff7990139b6d09aa65afb6e069db0dec
 
 #17
+Linux Auditing and Logging JSON 1
+File: /home/garviel/conn.log
+Use jq to pretty print the JSON file conn.log.
+Hash the pretty-printed file with md5sum for the flag.
+Sample JSON "Pretty Print" Output (without piping to MD5SUM)
+  "ts": 1615383120.585641,
+  "uid": "C9ybUDHykHdrh0h93",
+  "id.orig_h": "10.50.24.73",
+  "id.orig_p": 38156,
+  "id.resp_h": "192.168.65.20",
+  "id.resp_p": 443,
+  "proto": "tcp",
+  "duration": 2.8133392333984375e-05,
+  "orig_bytes": 0,
+  "resp_bytes": 0,
+HINT:
+https://jqplay.org/
+https://docs.jsonata.org/simple
+https://stedolan.github.io/jq/manual/
 
 
 #18

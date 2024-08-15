@@ -808,6 +808,10 @@ Uses a schema like HTML so it has tags and attributes like a webpage. Also, it i
 #XML Example
 Xpath Syntax: xpath -q -e '//element/@attribute' file.xml
 
+
+#grabs all ips from xml
+xpath -q -e '//host/address/@addr | //host/ports/port/@portid' output.xml
+
 ```
 ## JavaScript Object Notation (JSON)
 ```
@@ -827,6 +831,17 @@ https://docs.jsonata.org/simple
 https://jqplay.org/
 https://www.linode.com/docs/guides/using-jq-to-process-json-on-the-command-line/
 https://cheat.sh/jq
+
+#command examples
+
+cat conn.log | jq .
+
+cat conn.log | jq '."id.orig_h"' | sort -u | wc -l
+
+cat conn.log | jq 'select(.resp_bytes >= 40).ts' | wc -l # select the ts line from all blocks where "resp_bytes" >= 40 and gets the count
+cat conn.log | jq '.resp_bytes >= 40' | grep "true" |wc -l # gets boolean values for each resp_bytes value, filters out falses and gets the count
+
+
 
 ```
 

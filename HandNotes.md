@@ -808,9 +808,27 @@ Uses a schema like HTML so it has tags and attributes like a webpage. Also, it i
 #XML Example
 Xpath Syntax: xpath -q -e '//element/@attribute' file.xml
 
+```
+## JavaScript Object Notation (JSON)
+```
+Serialized data interchange format designed to be parsed by machines.
+
+#example
+{"ts":1615383120.600619,"uid":"CLdOLa12ikO7IbVX0d","id.orig_h":"10.50.24.73","id.orig_p":19831,"id.resp_h":"192.168.65.20","id.resp_p":110,"proto":"tcp","duration":0.000010013580322265625,"orig_bytes":0,"resp_bytes":0,"conn_state":"REJ","missed_bytes":0,"history":"Sr","orig_pkts":1,"orig_ip_bytes":60,"resp_pkts":1,"resp_ip_bytes":40}
+
+Kind of difficult to parse because its length. Try pretty printing it at the following link: https://jsonformatter.org/json-pretty-print
+Like XML, JSON needs can be queried using special programs. To query JSON use jq or JSON Query.
+Here is a JSON Query Tutorial - https://docs.jsonata.org/simple
+Here is a Online JSON Query tool - https://jqplay.org/
+Here is a jq Syntax Overview - https://www.linode.com/docs/guides/using-jq-to-process-json-on-the-command-line/
+Here is a jq Cheat sheet - https://cheat.sh/jq
+
+https://docs.jsonata.org/simple
+https://jqplay.org/
+https://www.linode.com/docs/guides/using-jq-to-process-json-on-the-command-line/
+https://cheat.sh/jq
 
 ```
-
 
 
 

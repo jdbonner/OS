@@ -849,3 +849,36 @@ cat conn.log | jq '.resp_bytes >= 40' | grep "true" |wc -l # gets boolean values
 
 
 
+
+
+
+
+
+
+#####################################
+
+# Memory Analysis
+```
+Memory forensics (also known as memory analysis) refers to the analysis of volatile data in a computer’s memory. Information security professionals conduct memory forensics to investigate and identify attacks or malicious behaviors that do not leave detectable tracks on hard drive data.
+
+Bash history writes to ~/.bash_history
+If a user deletes ~/.bash_history , recovery of data is still possible.
+Volatility reads deleted or modified logs and scraped from memory using the mfind, mcat & mls plugins.
+
+Order of Volatility From Most to Least
+CPU registers, cache
+Routing table, ARP cache, process table, kernel stats, memory
+Temporary file systems
+Disk
+Remote logging and monitoring data
+Physical configuration, network topology
+Archival media - backups
+
+
+
+```
+
+
+
+
+

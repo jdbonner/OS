@@ -442,15 +442,25 @@ HKEY_CURRENT_USER\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE
 
 
 #11
+*As andy.dwyer
+ > reg query hklm\software\microsoft\windows\currentversion\run
+ Answer: malware.exe
 
 #12
-
+*As student
+ > reg query hkcu\software\microsoft\windows\currentversion\run
+ Answer: C:\botnet.exe
 #13
-
+> reg query HKLM:\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE
+C:\virus.exe
 #14
-
+*As student
+ > reg query hkcu\software\microsoft\windows\currentversion\runonce
+ Answer: C:\worm.exe
 #15
-
+*As student
+> reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR
+    Answer: SanDisk9834
 #16
 
 #17
@@ -838,10 +848,9 @@ File: home/garviel/numbers
 Use regular expressions to match valid IP addresses. The flag is the number of addresses.
 
 HINT: What are the valid numerical values of each octet in an IP address?
-
-
-'^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$'
-
+$ cat /home/garviel/numbers 
+    $ grep '^[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}$' numbers | wc -l
+        Answer: 78
 
 
 #32
@@ -2286,12 +2295,44 @@ How many unique users logged into this machine?
 
 
 #24
+Linux Auditing and Logging Whut 2
+What is the total amount of time users were logged into the machine?
+Flag format: #h,#m (Replace the # with a number)
 
 #25
+Linux Auditing and Logging Whut 3
+Identify the Cyber Attack Technique that Balrog is trying on the machine.
+
 
 #26
+Linux Auditing and Logging XML 5
+File: /home/garviel/output.xml
+Select every IP address with open (in use) ports using XPATH queries and XPATH axes.
+Pipe the result to md5sum for the flag
+Sample Output (without piping to MD5SUM)
+addr="10.50.29.5"
+ portid="xx"
+ addr="xx.xx.xx.xx"
+ portid="xx"
+--TRIMMED--
+
 
 #27
+Linux Auditing and Logging Whut 4
+Challenge only allows ONE attempt
+What user successfully executed commands?
+
+#28
+Linux Auditing and Logging Whut 5
+Analyze the file to determine when a shell was spawned as a different user and how long it was maintained for.
+Provide the :
+duration the shell was maintained
+the command used to create it
+number of times they [successfully] escalated
+Flag Format: #h,#m,command,number of times
+Round minutes up to the closest number divisible by 10.
+
+
 
 ###############################END###############################
 ##############################################################END OF DAY 9##############################################################

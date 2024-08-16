@@ -2336,6 +2336,289 @@ Round minutes up to the closest number divisible by 10.
 
 ###############################END###############################
 ##############################################################END OF DAY 9##############################################################
+##############################################################DAY 10##############################################################
+###############################BLANK###############################
+#1
+Primer_Networking_1
+What is used in Windows to implement the networking stack to enable communication with the four lowest OSI layers?
+Network Driver Interface Specification (NDIS)
+
+#2
+Primer_Networking_2
+What Windows cmd.exe command will display the local computer's routing table?
+netstat -r
+
+#3
+Primer_Networking_3
+IANA assigned TCP/UDP ports in the range of 0-1023 that are usually associated with server-side services are known as?
+well-known ports
+
+#4
+Primer_Networking_4
+What term describes randomly assigned TCP/UDP ports above 1023 and are used for a short period of time (for the duration of a communication session}?
+ephemeral
+
+#5
+Primer_Networking_5
+The two words that decribe translating Host names to IP addresses or NetBIOS names to IP addresses is_____?
+Name Resolution
+
+
+#6
+Primer_Networking_6
+What is the hierarchical service/protocol that translates hostnames to IP addresses?
+dns
+
+#7
+Primer_Security_1
+What is the term for the numeric value that the Windows OS uses to uniquely ID a user, group or computer?
+SID
+
+#8
+Primer_Security_2
+What switch can be added to the CMD.exe command whoami, to view the SID of the current user?
+/all
+
+#9
+Primer_Security_3
+What is the value of a Relative Identifier (RID) assigned to the 1st user account?
+1000
+
+#10
+Primer_Security_4
+What is the well known RID for the Windows Built-In Administrator Local account?
+500
+
+#11
+Primer_Security_5
+Complete the GET_CimInstance cmdlet to view all the user SIDs on a Windows host machine by Name and SID respectively:
+Get-CimInstance Win32_UserAccount | Select-Object ______________
+**hint: the output will ONLY include Name and SID
+Name,SID
+
+#12
+Primer_Security_6
+In Windows what else does a user's security Token contain?
+SIDS of groups of which the user is a member
+Privilege array
+The Users _________ ?
+**hint: Flag describes the unique number assigned to the user
+SID
+
+#13
+Primer_Security_7
+When contained in a Windows users access token, what privilege does SeBackupPrivilege grant to the user to perform on files and folders?
+**hint - flag is one word
+backup
+
+#14
+Primer_Security_8
+Windows performs mandatory integrity checks (MICs) by comparing the integrity level of the resource with the integrity level of the calling process. Windows does this integrity check before the the objects discretionary access check because it is _____________?
+faster
+
+#15
+Primer_Security_9
+A Windows object's Security _________ contains:
+
+The SID of the object's owner
+Discretionary Access Control List (DACL)
+System Access Control List (SACL)
+Descriptor
+
+#16
+Primer_Security_10
+What contains Access Control Entries (ACEs), that define the types of access a user or group may be granted to an object?
+ACL
+
+#17
+Primer_Security_11
+What cmdlet gets objects that represent the security descriptor of a file or resource?
+Get-Acl
+
+
+#18
+Primer_Security_12
+What NET cmd.exe command can be used to enumerate the local Windows group accounts?
+net localgroup
+
+#19
+Primer_Security_13
+What Windows cmd.exe command will display or modify Access Control Lists (ACLs) for files and folders and resolves various issues that occur when using the older CACLS & XCACLS.
+iCACLS
+
+
+#20
+Primer_Security_14
+What Windows security feature is a system-level memory protection feature that is built into the operating system starting with Windows XP and Windows Server 2003 and enables the system to mark one or more pages of memory as non-executable?
+DEP
+
+#21
+Primer_Security_15
+What computer security technique is used in Windows to prevent exploitation of memory corruption vulnerabilities? This feature randomly arranges the address space positions of key data areas of a process, in order to prevent an attacker from reliably jumping to, a particular exploited function in memory.
+ASLR
+
+#22
+Primer_Security_16
+What is a small kernel-mode library that can implement API hooking?
+Shim
+
+
+#23
+Primer_Security_17
+Which security feature helps keep attackers from gaining access through Pass-the-Hash or Pass-the-Ticket attacks using virtualization-based security to isolate secrets, such as NTLM password hashes and Kerberos Ticket Granting Tickets?
+Credential Guard
+
+
+#24
+Primer_Security_18
+Introduced in Windows 8 this is Microsoft Antivirus, anti-malware solution?
+Windows Defender
+
+#25
+Primer_Security_19
+What security technique helps prevent overwrites of the Structured Exception Handler?
+SEHOP
+
+#26
+Primer_Security_20
+What security protection is built into Windows 10, as described in the "Memory reservations" item in Kernel pool protections? This includes protecting address space 0x00000000 (not listed in article).
+Null Page
+
+#27
+Primer_Security_21
+What Windows security feature prevents the replacement of essential system files, folders, and registry keys that are installed as part of the operating system? It became available starting with Windows Server 2008 and Windows Vista.
+WRP
+
+
+#28
+Primer_Security_22
+What option should you use with the System File Checker cmd.exe tool sfc.exe to scan all protected system files, and replace corrupted files with a cached copy that is located in a compressed folder at %WinDir%\System32\dllcache ?
+/scannow
+
+
+#29
+Primer_Security_23
+Where are copies of known-good critical system files located at %WinDir%___________ and used by the Windows Resource Protection feature?
+\WinSxS\Backup
+
+
+#30
+Primer_Networking_7
+What CLI tool is often used to troubleshoot DNS issues but can also be used in reconnaissance?
+nslookup
+
+
+#31
+Primer_Networking_8
+In Windows 10 what is the full path to the hosts file? Complete the path c:\Windows____________
+System32\drivers\etc\hosts
+
+
+#32
+Primer_Networking_9
+Fill in the missing component for the usual Host Name Resolution order:
+Client checks own host name
+Client searches local Hosts file
+______________________
+NetBIOS name resolution sequence is used as a backup
+Flag Format: Full name or acronym
+Domain Name System
+
+#33
+Primer_Networking_10
+What cmd.exe tool will display NetBIOS transport statistics in Windows?
+nbtstat
+
+
+#34
+Primer_Surveys_1
+What team survey is focused on security and auditing?
+
+______ Team
+red
+
+#35
+Primer_Surveys_2
+What type of survey is focused on computer system settings, updates, configurations and installed software?
+
+________ Team
+Blue
+#36
+Primer_Surveys_3
+What type of survey is focused on malware detection, artifact detection and investigating processes?
+Incident response
+
+#37
+Windows_Memory_Analysis_Plugin_1
+What Volatility plugin will dump a process to an executable file sample?
+procdump
+
+#38
+Windows_Memory_Analysis_Plugin_2
+What Volatility plugin will extract command history by scanning for _COMMAND_HISTORY?
+cmdscan
+
+#39
+Windows_Memory_Analysis_Plugin_3
+What Volatility plugin will show driver objects?
+driverscan
+
+#40
+Windows_Memory_Analysis_Basics_1
+What plugin do you run to find which memory profile to use with a memory image?
+
+
+#41
+Windows_Memory_Analysis_Basics_2
+What switch/argument will list all plugins for Volatility?
+
+
+
+#42
+Windows_Volatility_Data
+In terms of Volatile Data, what locations are the MOST volatile?
+CPU registers, cache
+
+
+#43
+Windows_Memory_Analysis_Basics_3
+What is the 12th plugin listed in the Volatility help menu?
+
+
+
+#44
+Windows_Memory_Analysis_Basics_4
+What profile do you use in conjunction with this memory image?
+Use the following file (memory image) to answer the rest of the Memory Analysis challenges.
+0zapftis.vmem
+
+
+
+#45
+Windows_Malware_1
+What command did the attacker type to check the status of the malware?
+
+
+#46
+Windows_Malware_2
+What are the last 7 digits of the memory offset for the driver used by the malware?
+
+
+
+#47
+Windows_Malware_3
+The process running under PID 544 seems malicious. What is the md5hash of the executable?
+
+
+#48
+Windows_Malware_4
+What remote IP and port did the system connect to?
+
+Flag format: ip:port
+
+
+###############################END###############################
+##############################################################END OF DAY 10##############################################################
 
 
 

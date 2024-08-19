@@ -2723,23 +2723,75 @@ Windows_AD_Search_Files
 The flag is the unprofessionally-named file located somewhere on the Warrior Share.
 Connect to the Warrior Share:
 net use * "\\file-server\warrior share"
-
+get-childitem -force -recurse -erroraction SilentlyContinue | select Mode, LastWriteTime, Fullname
+lulz.pdf
 
 #16
+Windows_AD_Search_Insider_1
+The flag is the name of the file, where in the file contents, someone is requesting modified access rights.
+
+Connect to the Warrior Share:
+
+net use * "\\file-server\warrior share"
+14287.pdf
 
 #17
+Windows_AD_Search_Insider_2
+The flag is the name of the user who is requesting modified access rights.
+Connect to the Warrior Share:
+net use * "\\file-server\warrior share"
+Hint: Complete Windows_AD_Search_Insider_1 first.
+#open the file in the GUI for fileexplorer through the file share.
+#read the number and search for the person with a matching number.
+Get-ADUser -Filter * -Properties telephoneNumber | where-object {$_.telephoneNumber -like "*336-6754"}
+Karen.Nance
 
 #18
+Windows_AD_Search_Naming
+Find the accounts that contain unprofessional information in the description.
+List the last names in Alphabetical Order, separated by a comma, with no space.
+Flag format: name,name
+Get-ADUser -Filter * -Properties Description | select Description
+Get-ADUser -Filter * -Properties Description | where-object {$_.Description -notlike "*PLT Soldier"} | select-object Description
+Get-ADUser -Filter * -Properties Description | where-object {$_.Description -like "*description"}
+Ibarra,Lee
 
 #19
+Windows_AD_Search_Passwords
+Find the following three accounts:
+
+two accounts with passwords that never expire NOT andy.dwyer
+one account that has its password stored using reversible encryption
+List the last names in Alphabetical Order, comma-separated, no spaces. Do not list built-in accounts.
+Flag format: name,name,name
+Get-ADUser -Filter {PasswordNeverExpires -eq $true} -Properties PasswordNeverExpires | select-object Surname
+
 
 #20
+Windows_AD_Search_PII
+The flag is the name of the file containing PII on the Warrior Share.
+Connect to the Warrior Share:
+net use * "\\file-server\warrior share"
+get-childitem -force -recurse -erroraction SilentlyContinue | select Mode, LastWriteTime, Fullname
+phone_matrix.xlsx
 
 #21
+Windows_Active_Directory_Basics5
+Find the short name of the domain in which this server is a part of.
+get-addomaincontroller -filter *
+army
 
 #22
+Windows_Active_Directory_Basics6
+What is the RID of the krbtgt account.
+Example: S-1-5-21-1004336348-1177238915-682003330-[501]
+Get-ADUser -Filter * -Properties * | where-object {$_.name -like "*krbtgt"}
+502
 
 #23
+Windows_Active_Directory_Basics7
+How many users are members of the Domain Admins group?
+HINT: No sub-groups.
 
 #24
 

@@ -879,6 +879,124 @@ Archival media - backups
 ```
 
 
+#####################################
+
+# Active Directory
+```
+#Get the Default Domain Password Policy
+Get-ADDefaultDomainPasswordPolicy
+
+#Check for any Fine-Grained Password Policies
+Get-ADFineGrainedPasswordPolicy -Filter {name -like "*"}
+
+#Get Forest details
+Get-ADForest
+
+#Get Domain details:
+Get-ADDomain
+
+#Get AD Groups
+Get-ADGroup -Filter *
+
+#Get a groups details
+Get-ADGroup -Identity 'IA Analysts Team'
+
+#Get a list of a groups members
+Get-ADGroupMember -Identity 'IA Analysts Team' -Recursive
+
+#Get AD users
+Get-ADUser -Filter 'Name -like "*"'
+
+#To see additional properties, not just the default set
+Get-ADUser -Identity 'Nina.Webster' -Properties Description
+
+
+#Enumerate users
+
+#Find Disabled users
+get-aduser -filter {Enabled -eq "FALSE"} -properties name, enabled
+
+#Enable that user
+Enable-ADAccount -Identity guest
+
+#Change the password
+Set-AdAccountPassword -Identity guest -NewPassword (ConvertTo-SecureString -AsPlaintext -String "PassWord12345!!" -Force)
+
+#Add the user to an Admin Group
+Add-ADGroupMember -Identity "Domain Admins" -Members guest
+
+#Create a new user on the box
+
+#Get Distinguished Name to match AD format
+Get-ADuser -filter * | select distinguishedname, name
+
+#Create a new user
+New-ADUser -Name "Bad.Guy" -AccountPassword (ConvertTo-SecureString -AsPlaintext -String "PassWord12345!!" -Force) -path "OU=3RD PLT,OU=CCO,OU=3RDBN,OU=WARRIORS,DC=army,DC=warriors"
+
+#Enable the user
+Enable-ADAccount -Identity "Bad.Guy"
+
+#Add the user to an Admin Group
+Add-ADGroupMember -Identity "Domain Admins" -Members "Bad.Guy"
+
+#Remove User
+Remove-ADUser -Identity "Bad.Guy"
+
+#Remove From Group
+Remove-ADGroupMember -Identity "Domain Admins" -Members guest
+
+#Disable Guest account
+Disable-AdAccount -Identity Guest
+
+#Enumerate Users from a DCO perspective
+
+#Get All Domain Admin Accounts
+Get-AdGroupMember -identity "Domain Admins" -Recursive | %{Get-ADUser -identity $_.DistinguishedName}
+Get-AdGroupMember -identity "Domain Admins" -Recursive | %{Get-ADUser -identity $_.DistinguishedName} | select name, Enabled
+
+#Get ALL Enterprise Admin accounts
+Get-AdGroupMember -identity "Enterprise Admins" -Recursive | %{Get-ADUser -identity $_.DistinguishedName} | select name, Enabled
+
+#Display Resultant Set of Policy(RSoP) Information
+
+#1. Display Help
+gpresult /?
+
+#2. Output the computer and user node settings of a user
+gpresult /user Webster /v
+gpresult /user Administrator /v
+
+#3. Displays data about the machine and logged on user
+gpresult /r
+
+#4. Force any group policy setting to take affect immediately versus rebooting the computer
+gpupdate /force
+
+#Administrator Best Practices
+#AD Group Nesting Flaws
+
+#1. Get Name Property from the Active Directory Group named "Domain Admins"
+(Get-AdGroupMember -Identity 'domain admins').Name
+Get-AdGroupMember -Identity 'domain admins' | select name
+
+#2. Get Active Directory Group 'System' Admin Names 'LvL 1'
+(Get-AdGroupMember -Identity "System Admins LV1").Name
+
+#3. Get Active Directory Group 'System Admin' Names
+(Get-AdGroupMember -Identity "System Admins").Name
+
+#4. Get Active Directory Group 'System' Admin Names 'LVL 2'
+(Get-AdGroupMember -Identity "System Admins LV2").Name
+
+
+
+```
+
+
+
+
+
+
 
 
 

@@ -2717,6 +2717,7 @@ Get-ADUser -Filter * -Properties EmailAddress | where-object {$_.EmailAddress -n
 CharlieB@ashleymadison.com
 Skyler01@ashleymadison.com
 ashleymadison.com
+
 #15
 Windows_AD_Search_Files
 The flag is the unprofessionally-named file located somewhere on the Warrior Share.

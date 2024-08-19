@@ -8,6 +8,10 @@ https://os.cybbh.io/public
 stack number: 2
 10.50.38.199
 
+
+#AD
+https://os.cybbh.io/public/os/latest/014_windows_active_directory_enumeration/primer.html#_7_administrator_best_practices
+
 ```
 # Login
 ```

@@ -2624,7 +2624,134 @@ Flag format: ip:port
 
 ###############################END###############################
 ##############################################################END OF DAY 10##############################################################
+##############################################################DAY 11##############################################################
+###############################BLANK###############################
+#1
+Primer_Active_Directory_1
+What is the database that is used to connect users with network resources?
+Active Directory (AD)
 
+
+#2
+Primer_Active_Directory_2
+What are all things that are in active directory stored as?
+objects
+
+#3
+Primer_Active_Directory_3
+What is the Active Directory component which contains formal definitions of every object class that can be created in an Active Directory forest?
+schema
+
+
+#4
+Primer_Active_Directory_4
+What protocol is used when accessing and updating the Active Directory?
+LDAP
+
+#5
+Primer_Active_Directory_5
+From an Offensive perspective, what type of account is usually the main target?
+Admin
+
+#6
+Primer_Active_Directory_6
+Task : If an account has been inactive for a substantial amount of time what should the adminstrators do to the account?
+disable
+
+#7
+Primer_Active_Directory_7
+What is the basic PowerShell cmdlet used to enumerate users?
+Get-ADUser
+
+
+
+#8
+Primer_Active_Directory_8
+What is the suite of tools used in CLI to enumerate users across the network?
+DS
+
+#9
+Windows_Active_Directory_Basics1
+What is the domain portion of the following SID:
+S-1-5-21-1004336348-1177238915-682003330-1000
+21-1004336348-1177238915-682003330
+
+#10
+Windows_Active_Directory_Basics2
+What PowerShell command will list domain groups?
+Get-ADGroup
+
+
+
+#11
+Windows_Active_Directory_Basics3
+What PowerShell command will list all users and their default properties?
+The flag is the full command with arguments.
+Get-ADUser -filter *
+
+
+
+#12
+Windows_Active_Directory_Basics4
+What PowerShell command will allow you to search Active Directory accounts for expired accounts without having to create a filter?
+The flag is only the command, no arguments/switches.
+Search-ADAccount
+
+
+
+
+#13
+Windows_AD_Search_Accounts
+Find the expired accounts that aren't disabled. List the last names in Alphabetical Order, separated with a comma, and no space between.
+Flag format: name,name
+Reminder: All challenges are done using the Domain-Controller
+
+Get-ADUser -Filter {Enabled -eq $true} -Properties AccountExpirationDate | Where-Object {$_.AccountExpirationDate -lt (get-date) -and $_.Enabled -ne $null} | select-object GivenName
+Krause,Page
+
+#14
+Windows_AD_Search_Emails
+Find the unprofessional email addresses. List the email's domain.
+Get-ADUser -Filter * -Properties EmailAddress | select-object EmailAddress
+Get-ADUser -Filter * -Properties EmailAddress | where-object {$_.EmailAddress -notlike "*mail.mil"} | select-object EmailAddress
+CharlieB@ashleymadison.com
+Skyler01@ashleymadison.com
+ashleymadison.com
+#15
+Windows_AD_Search_Files
+The flag is the unprofessionally-named file located somewhere on the Warrior Share.
+Connect to the Warrior Share:
+net use * "\\file-server\warrior share"
+
+
+#16
+
+#17
+
+#18
+
+#19
+
+#20
+
+#21
+
+#22
+
+#23
+
+#24
+
+#25
+
+#26
+
+#27
+
+#28
+
+###############################END###############################
+##############################################################END OF DAY 11##############################################################
 
 
 

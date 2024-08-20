@@ -2764,8 +2764,11 @@ two accounts with passwords that never expire NOT andy.dwyer
 one account that has its password stored using reversible encryption
 List the last names in Alphabetical Order, comma-separated, no spaces. Do not list built-in accounts.
 Flag format: name,name,name
+#get the users with passwords that never expire
 Get-ADUser -Filter {PasswordNeverExpires -eq $true} -Properties PasswordNeverExpires | select-object Surname
-
+#get the account with reversible encryption
+Get-ADUser -filter {AllowReversiblePasswordEncryption -eq $True} -Properties "AllowReversiblePasswordEncryption"
+Brandywine,Ibarra,Sanchez
 
 #20
 Windows_AD_Search_PII
@@ -2822,11 +2825,26 @@ Continue to follow the insider trail to find additional insider threats and thei
 The flag is the username resulting from assembling clues within a user's records.
 HINT: Search the Active Directory record of the user identified in follow_insider_trail_1. Piece together clues to identify another insider threat.
 Get-ADUser -Filter * -Properties * | where-object {$_.name -like "*Tiffany*"}
-
+#look for wis
+Get-ADUser -Filter * -Properties * | where-object {$_.name -like "*wis*"}
+#account Damian.Lewis has a lead. Isiah
+Damian.Lewis
 
 #27
+Windows_AD_Follow_Insider_Trail_3
+Continue to follow the insider trail to find additional insider threats and their compromised mission.
+The flag is the full name of the insider threat identified.
+HINT: Search the Active Directory record for the user identified in follow_insider_trail_2.
+Get-ADUser -Filter * -Properties * | where-object {$_.name -like "*Isiah*"}
+#has base64 encoded url to rick roll.
+Isiah.Jesus
 
 #28
+Windows_AD_Follow_Insider_Trail_4
+Continue to follow the insider trail to find additional insider threats and their compromised mission. This flag is a video link.
+Hint: Search the Active Directory record for the user identified in follow_insider_trail_3.
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
 
 ###############################END###############################
 ##############################################################END OF DAY 11##############################################################

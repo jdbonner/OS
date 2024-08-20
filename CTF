@@ -2792,12 +2792,37 @@ Get-ADUser -Filter * -Properties * | where-object {$_.name -like "*krbtgt"}
 Windows_Active_Directory_Basics7
 How many users are members of the Domain Admins group?
 HINT: No sub-groups.
+Get-ADGroup -filter * -properties * | Where-Object {$_.name -like "Domain Admins"}
+#look at the members field. Its just Administrator not counting other sub groups.
+1
 
 #24
+Windows_Active_Directory_Basics8
+How many total users are members of the Domain Admins group?
+#enumerate the users of Domain Admins
+Get-ADGroupMember -Identity "Domain Admins" -Recursive
+#get the count 
+Measure-Object -property count
 
 #25
+Windows_AD_Follow_Insider_Trail_1
+Continue to follow the insider trail to find additional insider threats and their compromised mission.
+The flag is the full name of the next insider threat identified.
+HINT: Search the Active Directory record of the user identified in search_insider_2.
+Get-ADUser -Filter * -Properties * | where-object {$_.name -like "*Karen*"}
+#when you search for karen her address is a caesar cipher shift 13 reads 
+#expect my next communication at 06:30 hrs tomorrow morning. Location for details involving a highly classified operation uploaded to Tiffany . .
+#search tiffany
+Get-ADUser -Filter * -Properties * | where-object {$_.name -like "*Tiffany*"}
+Tiffany.Bellacino
 
 #26
+Windows_AD_Follow_Insider_Trail_2
+Continue to follow the insider trail to find additional insider threats and their compromised mission.
+The flag is the username resulting from assembling clues within a user's records.
+HINT: Search the Active Directory record of the user identified in follow_insider_trail_1. Piece together clues to identify another insider threat.
+Get-ADUser -Filter * -Properties * | where-object {$_.name -like "*Tiffany*"}
+
 
 #27
 

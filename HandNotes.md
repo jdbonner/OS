@@ -950,6 +950,7 @@ Disable-AdAccount -Identity Guest
 
 #Enumerate Users from a DCO perspective
 
+
 #Get All Domain Admin Accounts
 Get-AdGroupMember -identity "Domain Admins" -Recursive | %{Get-ADUser -identity $_.DistinguishedName}
 Get-AdGroupMember -identity "Domain Admins" -Recursive | %{Get-ADUser -identity $_.DistinguishedName} | select name, Enabled

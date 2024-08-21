@@ -1,3 +1,57 @@
+review
+powershell profile 
+> 4 profiles
+registry keys 
+> run, runonce
+ADS 
+> used to hide and obfuscate things
+linux essentials 
+> file permissions
+Windows Boot Process 
+> 
+Linux Boot Process 
+> crontab, run levels/etc init, bashrc, scheduletasks, sbin init
+> boot sector, grub
+> sbin init, sysd
+> sysv etc init tab
+> systemv sbin init
+> etc env file
+> etc profile file
+> bashrc file
+> 
+Windows Process Validity
+>sequential ports
+>repeating ports
+>doesn't follow naming scheme
+>scheduled tasks #the program its running
+>startup file
+Windows Sysinternals Tools
+>autorun
+>procmon
+>use strings to get the content of an executable
+>
+User Account Control
+Linux Process Validity
+>var/cron
+>etc/cronttab
+>
+Windows Auditing and Logging
+>prefetch
+>userassist
+Linux Auditing and Logging
+>ports
+>scheduled tasks
+Memory Analysis
+>none
+Active Directory Enumeration
+>none
+
+
+
+
+
+
+
 # WINDOWS
 ## Registry keys
 
@@ -566,7 +620,7 @@ reg add HKLM\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBl
 
 ##################################################################
 
-
+awk 'NR >=420 && NR <=1337' numbers | sha512sum
 
 
 # Linux

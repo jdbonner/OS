@@ -1,9 +1,14 @@
+http://10.50.21.2:8000
+JOBO-M-006
+favorite lothric knight
 stack number 2
+
 
 windows > RDP
 10.50.42.15
 linux > SSH
 10.50.39.105
+
 
 review
 powershell profile 

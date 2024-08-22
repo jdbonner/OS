@@ -1,3 +1,10 @@
+stack number 2
+
+windows > RDP
+10.50.42.15
+linux > SSH
+10.50.39.105
+
 review
 powershell profile 
 > 4 profiles
